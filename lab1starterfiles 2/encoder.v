@@ -1,5 +1,22 @@
 module encoder (
-   
+  input wire [7:0] in, 
+  output reg [2:0] out
 );
-   
+
+  // Takes 8 bit one-hot input and outputs the
+  // index of the bit set to 1. 
+  always @(*) begin
+    case(in)
+      8'b00000000: out = 3'b000;
+      8'b00000010: out = 3'b001;
+      8'b00000100: out = 3'b010;
+      8'b00001000: out = 3'b011;
+      8'b00010000: out = 3'b100;
+      8'b00100000: out = 3'b101;
+      8'b01000000: out = 3'b110;
+      8'b10000000: out = 3'b111;
+      default:     out = 3'b000;
+    endcase 
+  end
 endmodule
+
