@@ -34,19 +34,52 @@ module n_bit_multiplier #(parameter N = 4)
 	endgenerate
 	
 	// assign the output
-	assign p[0] = partial_product[0][0];
+  assign p[0] = partial_product[0][0];
 	generate
 		genvar k;
-      for(k=1; k < N-1; k=k+1) begin: part1
+      for(k=0; k < N-1; k=k+1) begin: part1
 			assign p[k] = adder_output[k][0];
 		end
-      for(k=0; k < N; k=k+1)begin: part2
-			assign p[k] = adder_output[N-1][k];
-		end
 	endgenerate
-	assign p[(2*N)-1] = adder_carry[N-1];
-	
-	
-			
+  assign p[(2*N)-1:N-1] = {adder_carry[N-1], adder_output[N-1]};
+		
  
+endmodule
+
+module n_bit_adder #(parameter N=4)(
+    input [N-1:0] a, b,
+    input cin,
+    output [N-1:0] out,
+    output of
+    );
+    
+
+    wire [N:0] carry;
+    
+    assign carry[0]=cin;
+    assign of = carry[N];
+        
+    generate
+        genvar i;
+        for (i = 0; i < N; i=i+1) begin : full_adder_array
+            one_bit_full_adder adder_i (
+                .a(a[i]), 
+                .b(b[i]), 
+                .cin(carry[i]),
+                .cout(carry[i+1]), 
+                .s(out[i])
+            );
+        end
+    endgenerate
+endmodule
+
+
+module one_bit_full_adder(
+    input a, b, cin,
+    output wire cout, s // carry and sum
+    );
+    
+    assign s = a ^ b ^ cin ;
+    assign cout = (a & b)|(a & cin)|(b & cin) ; // majority
+
 endmodule
