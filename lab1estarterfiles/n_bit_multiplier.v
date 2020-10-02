@@ -4,7 +4,7 @@ module n_bit_multiplier #(parameter N = 4)
 	input wire [N-1:0] b, // Input 2
 	output wire [(2*N)-1:0] p  // Output Product: a*b
 );
-	wire [N-1:0] partial_products [N-1:0];	
+	wire [N-1:0] partial_products [0:N-1];	
 	generate
 		//assigns array of partial products
 		genvar i;
