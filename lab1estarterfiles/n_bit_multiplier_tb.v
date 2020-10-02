@@ -13,6 +13,12 @@ initial begin
     in0 = 4'd0; in1 = 4'd0;
     #100 $display("%03d * %03d = %03d ", in0, in1, out) ;
     // Check all possibilities for two different width multiplier modules of Width >= 3
+    
+    in0 = 4'd0001; in1 = 4'd0010;
+    #100 $display("%03d * %03d = %03d ", in0, in1, out) ;
+    
+    in0 = 4'd0110; in1 = 4'd1110;
+    #100 $display("%03d * %03d = %03d ", in0, in1, out) ;
 
 end
 
