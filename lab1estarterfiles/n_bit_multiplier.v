@@ -23,7 +23,7 @@ module n_bit_multiplier #(parameter N = 4)
 		// generates n n-bit adders
 		genvar j;
 		for (j=1; j < N; j=j+1) begin: adders
-			N_bit_full_adder #() adder_j (
+			n_bit_adder #() adder_j (
 				.a(partial_products[j]),
 				.b({adder_carry[j-1], adder_output[j-1][N-1:N-3]}),
 				.cin(0),
@@ -37,10 +37,10 @@ module n_bit_multiplier #(parameter N = 4)
 	assign p[0] = partial_product[0][0];
 	generate
 		genvar k;
-		for(k=1; k < N-1; k=k+1) begin:
+      for(k=1; k < N-1; k=k+1) begin: part1
 			assign p[k] = adder_output[k][0];
 		end
-		for(k=0; k < N; k=k+1)begin:
+      for(k=0; k < N; k=k+1)begin: part2
 			assign p[k] = adder_output[N-1][k];
 		end
 	endgenerate
