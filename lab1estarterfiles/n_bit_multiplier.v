@@ -8,43 +8,43 @@ module n_bit_multiplier #(parameter N = 4)
 	generate
 		//assigns array of partial products
 		genvar i;
-		for (i=0; i<N; i=i+1) begin: partial_products
+		for (i=0; i<N; i=i+1) begin: array
 			// assign this to a ANDed with i-th bit of b
-			assign partial_products[i] = a & N{b[i]};
+			assign partial_products[i] = a & {N{b[i]}};
 		end
 	endgenerate
 	
-	wire [N-1:0] adder_output [N-1:0];
+	wire [N-1:0] adder_output [0:N-1];
 	wire [N-1:0] adder_carry;
 	assign adder_output[0] = partial_products[0];
-	assign adder_carry[0] = 0;
+	assign adder_carry[0] = 1'b0;
 	
 	generate
 		// generates n n-bit adders
-		genvar i;
-		for (i=1; i < N; i=i+1) begin: adders
-			b_input = {adder_carry[i-1], adder_output[i-1][N-1:N-3]};
-			N_bit_full_adder #() adder_i (
-				.a(partial_products[i]),
-				.b(b_input),
+		genvar j;
+		for (j=1; j < N; j=j+1) begin: adders
+			N_bit_full_adder #() adder_j (
+				.a(partial_products[j]),
+				.b({adder_carry[j-1], adder_output[j-1][N-1:N-3]}),
 				.cin(0),
-				.out(adder_output[i]),
-				.of(adder_carry[i])
-			)
+				.out(adder_output[j]),
+				.of(adder_carry[j])
+			);
 		end
 	endgenerate
 	
 	// assign the output
+	assign p[0] = partial_product[0][0];
 	generate
-		assign p[0] = partial_product[0][0];
-		for(i=1; i < N-1; i=i+1) begin:
-			assign p[i] = adder_output[i][0];
+		genvar k;
+		for(k=1; k < N-1; k=k+1) begin:
+			assign p[k] = adder_output[k][0];
 		end
-		for(i=0; i < N; i=i+1)begin:
-			assign p[i] = adder_output[N-1][i];
+		for(k=0; k < N; k=k+1)begin:
+			assign p[k] = adder_output[N-1][k];
 		end
-		assign p[(2*N)-1] = adder_carry[N-1];
 	endgenerate
+	assign p[(2*N)-1] = adder_carry[N-1];
 	
 	
 			
