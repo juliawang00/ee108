@@ -40,7 +40,7 @@ module shifter_tb (
     di = 1'b0;
     #5
     $display("Input is %b, we are shifting %b towards %b", i, d, di);
-    $display("Output is %b, we expected %b", o, 5'00000);
+    $display("Output is %b, we expected %b", o, 5'b00000);
   end
 
 
