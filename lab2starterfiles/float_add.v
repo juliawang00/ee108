@@ -48,7 +48,12 @@ module float_add (
   reg [4:0] assign_sum;
     always @* begin
         if(carry == 1'b1) begin
-            assign_sum = {1'b1, sum[4:1]};
+	    if(exp_1 == 3'b111) begin
+		assign_sum = 5'b11111;
+	    end
+	    else begin
+                assign_sum = {1'b1, sum[4:1]};
+	    end
         end
       else begin
         assign_sum = sum;
