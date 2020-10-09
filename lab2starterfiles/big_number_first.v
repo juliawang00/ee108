@@ -6,8 +6,8 @@ module big_number_first (
 
 );
   
-  wire [2:0] aExp = aIn >> 5;
-  wire [2:0] bExp = bIn >> 5;
+  wire [2:0] aExp = aIn[7:5];
+  wire [2:0] bExp = bIn[7:5];
   
   always @(*) begin
     if (aIn > bIn) begin
