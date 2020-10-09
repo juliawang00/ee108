@@ -9,15 +9,6 @@ module float_add (
         .aIn(aIn), .bIn(bIn), .aOut(aOut), .bOut(bOut)
 	);
 	
-	
-	wire [7:0] maxNum = 1'd3968 - aOut;
-	always @(*) begin
-		if(maxNum > bOut) begin
-			result = 8'b1;
-		end
-	end
-	
-	
     // find difference in exponents
   wire [2:0] exp_1;
   assign exp_1 = aOut[7:5];
