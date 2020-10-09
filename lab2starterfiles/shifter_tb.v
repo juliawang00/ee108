@@ -33,6 +33,14 @@ module shifter_tb (
     #5
     $display("Input is %b, we are shifting %b towards %b", i, d, di);
     $display("Output is %b, we expected %b", o, 5'b01000);
+    
+    // Test Case 4
+    i = 5'b11111;
+    d = 3'b111;
+    di = 1'b0;
+    #5
+    $display("Input is %b, we are shifting %b towards %b", i, d, di);
+    $display("Output is %b, we expected %b", o, 5'00000);
   end
 
 
