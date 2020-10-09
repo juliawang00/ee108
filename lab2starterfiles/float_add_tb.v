@@ -30,6 +30,26 @@ module float_add_tb ();
   
      #100 $display("%b + %b = %b", aIn, bIn, out);
      
+    aIn = 8'b11111110; 
+  	bIn = 8'b11111110;
+  
+     #100 $display("%b + %b = %b", aIn, bIn, out);
+     
+    aIn = 8'b00000000; 
+  	bIn = 8'b00000000;
+  
+     #100 $display("%b + %b = %b", aIn, bIn, out);
+     
+    aIn = 8'b00000000; 
+  	bIn = 8'b00010000;
+  
+     #100 $display("%b + %b = %b", aIn, bIn, out);
+     
+    aIn = 8'b00000000; 
+  	bIn = 8'b11111111;
+  
+     #100 $display("%b + %b = %b", aIn, bIn, out);
+     
    end
 
 
