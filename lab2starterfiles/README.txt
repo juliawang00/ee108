@@ -37,3 +37,10 @@ and adding.
 d) We shift the input with the smaller exponent to the right as opposed to shifting the input with the larger exponent to the left because
 we want to keep the MSB after we add and drop the LSB. If we add a number that is much larger to a number that is much smaller, we will
 ultimately lose precision in regards to the smaller number in order to account for the value of the larger number.
+
+e) Explanation of no synthesis: Piazza @155
+
+We were unable to generate a bitfile. This has been a recurring problem and unfortunately we weren't able to take it OH in time. The first time
+we tried synthesizing we received an unable to write bitstream error. We then tried toggling I/O ports through the command line to suppress this
+error using commands from Xilinx to address previous occurrences of this problem. This ended up crashing multiple other parts of the program that
+we were unable to backtrack and fix. We tried vivavod synthesis from scratch but still came across the same errors.
