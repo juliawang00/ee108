@@ -40,5 +40,4 @@ module blinker_tb ();
    $stop
    
  end 
-endmodule 
 endmodule
