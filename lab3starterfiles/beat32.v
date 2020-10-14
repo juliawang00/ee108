@@ -18,7 +18,7 @@ module beat32 #(parameter n = 22)
       nextState = next - 1'b1;
     end
     else begin
-      next = nextstate;
+      next = nextState;
     end
   end
   
