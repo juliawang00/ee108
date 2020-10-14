@@ -1,21 +1,21 @@
 module beat32 #(parameter n = 22)
   ( input clk, 
 //     input reset, 	// Standard system clock and reset
-    input in, 	// Value to be loaded into countdown: 22'd3125000
+    input load, 	// Value to be loaded into countdown: 22'd3125000
     output wire done	// 
 );
   reg [n-1:0] next;
-  wire [n-1:0] nextstate;
+  wire [n-1:0] nextState;
   
-  DFF #(n) count(clk, next, nextstate);
+  dff #(n) count(clk, next, nextState);
   
   
-  always@(*) begin
+  always @(*) begin
     if (!(|next)) begin
-      next = in;
+      nextState = load;
     end
     else if((|next)) begin
-      next = nextstate - 1'b1;
+      nextState = next - 1'b1;
     end
     else begin
       next = nextstate;
