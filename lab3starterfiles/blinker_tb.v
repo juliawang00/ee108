@@ -4,7 +4,6 @@ module blinker_tb ();
   
   blinker #() DUT(.clk(clk), .switch(switch), .reset(reset), .out(out));
   
-  initial
   forever
    begin
      #5 clk = 1 ; 
