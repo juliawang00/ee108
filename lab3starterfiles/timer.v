@@ -48,8 +48,8 @@ module timer (
     end
   end
   
-  wire[8:0] next = 9'b0;
-  wire[8:0] out = 9'b0;
+  wire[8:0] next;
+  wire[8:0] out;
     
   dffre #(9) ff(.clk(clk),
                 .r(rst), 
@@ -87,9 +87,9 @@ module timer (
   end
   */
   
-  assign next = (out == counter) ? {9{1'b0}} : out + 1'b1;
+  assign next = (out == 0) ? counter : out - 1;
   
-  assign q = (out == counter) ? 1'b1 : 1'b0;
+  assign q = (out == 0) ? 1 : 0;
   
   
   
