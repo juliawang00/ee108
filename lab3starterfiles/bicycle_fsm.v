@@ -27,6 +27,7 @@ module bicycle_fsm(
     wire shift_right_2;
     wire [1:0] mux_input;
     reg [2:0] state = 3'b000;
+    wire light_output;
     
     master_fsm #() master(.faster(faster), .slower(slower), .clk(clk), .rst(reset), .next(next), .state(state), .mux_input(mux_input), .shift_left_1(shift_left_1), .shift_right_1(shift_right_1),.shift_left_2(shift_left_2), .shift_right_2(shift_right_2));
     beat32 #() beat32(.clk(clk), .rst(reset), .load(load), .done(count_en));
@@ -39,5 +40,6 @@ module bicycle_fsm(
     programmable_blinker #() slow_blinker(.up_button(shift_left_2), .down_button(shift_right_2), .clk(clk), .rst(reset), .out_light(out_light2));
 
     // Output mux here
-    mux #() light(.state(mux_input), .fast_blink(out_light1), .slow_blink(out_light2), .rear_light(rear_light));
+    mux #() light(.state(mux_input), .fast_blink(out_light1), .slow_blink(out_light2), .rear_light(light_output));
+    assign rear_light = wire_output;
 endmodule
