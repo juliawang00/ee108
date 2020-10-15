@@ -3,7 +3,7 @@ module master_fsm (
   input slower,
   input clk,
   input rst,
-  input [3:0] next,
+  input next,
   output wire [1:0] mux_input,
   output wire shift_left_1,
   output wire shift_right_1,
@@ -45,7 +45,6 @@ module master_fsm (
   assign shift_left_2 = sl2;
   assign shift_right_2 = sr2;
   assign mux_input = in;
-  assign state = next;
-  assign next = rst ? 3'b000 : next + 1;
+  assign state = rst ? 3'b000 : state + next;
 
 endmodule
