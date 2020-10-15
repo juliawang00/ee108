@@ -57,42 +57,9 @@ module timer (
                 .d(next), 
                 .q(out)
   );
-  
-  //counter = counter - 1'b1;
-  
-  
-  /*
-  always @(*) begin
-  
-    if(counter == 0)begin 
-      counter = hold;
-    end
-    
-    else begin 
-      counter = counter;
-    end
-    
-  end
-  
-  assign q = !(|counter);
-  */
-  
-  /*
-  always@(*) begin
-    casex({count_en, rst})
-      2'bx1: next = {9{1'b0}} ;
-      2'b10: next = out + 1'b1 ;
-      default: next = out;
-      endcase
-  end
-  */
-  
+
   assign next = (out == 0) ? counter : out - 1;
   
   assign q = (out == 0) ? 1 : 0;
-  
-  
-  
-  //reset next
   
 endmodule
