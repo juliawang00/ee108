@@ -41,5 +41,5 @@ module bicycle_fsm(
 
     // Output mux here
     mux #() light(.state(mux_input), .fast_blink(out_light1), .slow_blink(out_light2), .rear_light(light_output));
-    assign rear_light = wire_output;
+    assign rear_light = light_output;
 endmodule
