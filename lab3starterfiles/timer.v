@@ -48,7 +48,7 @@ module timer (
     end
   end
   
-  reg[8:0] next = 9'b0;
+  wire[8:0] next = 9'b0;
   wire[8:0] out = 9'b0;
     
   dffre #(9) ff(.clk(clk),
@@ -77,6 +77,7 @@ module timer (
   assign q = !(|counter);
   */
   
+  /*
   always@(*) begin
     casex({count_en, rst})
       2'bx1: next = {9{1'b0}} ;
@@ -84,8 +85,13 @@ module timer (
       default: next = out;
       endcase
   end
+  */
+  
+  assign next = (out == counter) ? {9{1'b0}} : out + 1'b1;
   
   assign q = (out == counter) ? 1'b1 : 1'b0;
+  
+  
   
   //reset next
   
