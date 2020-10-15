@@ -1,7 +1,7 @@
 module beat32 #(parameter n = 22)
   ( input clk, rst,  	// Clock, Reset, Value to be loaded into 
    input [n-1:0] load,
-   output wire [n-1:0] done	// Output high when counter reaches zero
+   output wire done	// Output high when counter reaches zero
 );
   wire [n-1:0] next;
   wire [n-1:0] nextState;
