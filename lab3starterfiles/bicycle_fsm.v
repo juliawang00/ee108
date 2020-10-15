@@ -25,9 +25,10 @@ module bicycle_fsm(
     beat32 #() beat32(.clk(clk), .load(load) .done(count_en));
     // counten serves as the input to the timers for the programmable blinkers
     
-    programmable_blinker #() fast_blinker(.up_button(faster), .down_button(slower), .shift_right(1'b1), .count_en(count_en), .rear_light(rear_light));
-    pprogrammable_blinker #() fast_blinker(.up_button(faster), .down_button(slower), .shift_right(1'b0), .count_en(count_en), .rear_light(rear_light));
+    programmable_blinker #() fast_blinker(.up_button(faster), .down_button(slower), .clk(clk), .rst(reset), .rear_light(rear_light));
+    programmable_blinker #() slow_blinker(.up_button(faster), .down_button(slower), .clk(clk), .rst(reset), .rear_light(rear_light));
 
     // Output mux here
-
+    wire mux_input = 1'b1; // this wire will get assigned in master_fsm depending on the state
+    mux #() light(.on(mux_input));
 endmodule
