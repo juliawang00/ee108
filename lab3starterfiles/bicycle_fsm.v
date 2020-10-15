@@ -38,5 +38,5 @@ module bicycle_fsm(
     programmable_blinker #() slow_blinker(.up_button(shift_left_2), .down_button(shift_right_2), .clk(clk), .rst(reset), .out_light(out_light2));
 
     // Output mux here
-    mux #() light(.on(mux_input), .fast_blink(out_light1), .slow_blink(out_light2), .rear_light(rear_light));
+    mux #() light(.state(mux_input), .fast_blink(out_light1), .slow_blink(out_light2), .rear_light(rear_light));
 endmodule
