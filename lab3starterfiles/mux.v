@@ -12,6 +12,7 @@ module mux(
       2'b01: light = 0'b1; // ON STATE
       2'b10: light = fast_blink; // FLASH 1
       2'b11: light = slow_blink; // FLASH 2
+      default: light = 0'b0;
     endcase
   end
   assign rear_light = light;
