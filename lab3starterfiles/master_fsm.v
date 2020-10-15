@@ -1,6 +1,8 @@
 module master_fsm (
   input faster, 
-  input slower, 
+  input slower,
+  input clk,
+  input rst,
   input [3:0] next,
   output wire mux_input,
   output wire shift_left_1,
