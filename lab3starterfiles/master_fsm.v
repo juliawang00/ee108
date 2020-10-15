@@ -4,6 +4,7 @@ module master_fsm (
   input clk,
   input rst,
   input next,
+  input [3:0] state,
   output wire [1:0] mux_input,
   output wire shift_left_1,
   output wire shift_right_1,
@@ -11,7 +12,6 @@ module master_fsm (
   output wire shift_right_2
 );
   
-  wire [3:0] state; // total of 6 possible states
   reg in, sl1, sl2, sr1, sr2;
   always @(*) begin
     case(state)
