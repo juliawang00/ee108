@@ -4,7 +4,7 @@ module programmable_blinker_tb ();
   
   programmable_blinker #() DUT(.up_button(up_button), .down_button(down_button), .clk(clk), .rst(rst), .rear_light(output));
   
-  intial
+  initial
   forever begin
     #5 clk = 1;
     #5 clk = 0;
