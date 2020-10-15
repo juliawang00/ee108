@@ -1,6 +1,6 @@
 module programmable_blinker (
-  input wire up_button,
-  input wire down_button,
+  input up_button,
+  input down_button,
   input clk,
   input rst,
   output wire rear_light
