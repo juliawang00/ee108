@@ -3,24 +3,26 @@ module beat32 #(parameter n = 22)
     output wire done	// Output high when counter reaches zero
 );
   wire [n-1:0] next;
-  reg [n-1:0] nextState;
+  wire [n-1:0] nextState;
   
   dffr #(n) count(clk, rst, nextState, next);
   
-  // Counter: Decrement unless next is all zeros. Then set to load.
-  always @(*) begin
-    if (!(|next)) begin
-      nextState = load;
-    end
-    else if((|next)) begin
-      nextState = next - 1'b1;
-    end
-    else begin
-       nextState = next;
-    end
-  end
+  assign nextState = (next == 22'b0) ? load : next - 1;
   
-  // Output high when counter reaches zero
+//   // Counter: Decrement unless next is all zeros. Then set to load.
+//   always @(*) begin
+//     if (!(|next)) begin
+//       nextState = load;
+//     end
+//     else if((|next)) begin
+//       nextState = next - 1'b1;
+//     end
+//     else begin
+//        nextState = next;
+//     end
+//   end
+  
+//   // Output high when counter reaches zero
   assign done = !(|next);
 
 endmodule
