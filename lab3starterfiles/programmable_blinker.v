@@ -1,6 +1,6 @@
 module programmable_blinker (
-  input wire up_button,
-  input wire down_button,
+  input shift_left,
+  input shift_right,
   input clk,
   input rst,
   output wire rear_light
@@ -11,13 +11,13 @@ module programmable_blinker (
   reg [3:0] state = 4'b0001;
   reg [3:0] load_value;
   
-  shifter #() shif(shift_dir, state, load_value);
+  shifter #() shift(shift_dir, state, load_value);
   
   always @(*) begin
-    if(up_button == 1) begin
+    if(shift_left == 1) begin
       shift_dir = 1;
     end
-    else if(down_button == 1)begin
+    else if(shift_right == 1)begin
       shift_dir = 0;
     end
     else
