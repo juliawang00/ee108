@@ -8,10 +8,10 @@ module mux(
   reg light;
   always @(*) begin
     case(state):
-      2'b00: light = 0'b0;
-      2'b01: light = 0'b1;
-      2'b10: light = fast_blink;
-      2'b11: light = slow_blink;
+      2'b00: light = 0'b0; // OFF STATE
+      2'b01: light = 0'b1; // ON STATE
+      2'b10: light = fast_blink; // FLASH 1
+      2'b11: light = slow_blink; // FLASH 2
   end
   assign rear_light = light;
 endmodule
