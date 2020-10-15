@@ -26,8 +26,9 @@ module bicycle_fsm(
     wire shift_left_2;
     wire shift_right_2;
     wire [1:0] mux_input;
+    reg [2:0] state = 3'b000;
     
-    master_fsm #() master(.faster(faster), .slower(slower), .clk(clk), .rst(reset), .next(next), .mux_input(mux_input), .shift_left_1(shift_left_1), .shift_right_1(shift_right_1),.shift_left_2(shift_left_2), .shift_right_2(shift_right_2));
+    master_fsm #() master(.faster(faster), .slower(slower), .clk(clk), .rst(reset), .next(next), .state(state), .mux_input(mux_input), .shift_left_1(shift_left_1), .shift_right_1(shift_right_1),.shift_left_2(shift_left_2), .shift_right_2(shift_right_2));
     beat32 #() beat32(.clk(clk), .rst(reset), .load(load), .done(count_en));
     // counten serves as the input to the timers for the programmable blinkers
     
