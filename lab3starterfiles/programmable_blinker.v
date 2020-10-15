@@ -1,19 +1,16 @@
 module programmable_blinker (
-  wire up_button;
-  wire down_button;
+  input wire up_button,
+  input wire down_button,
+  input wire shift_right,
+  input wire count_en,
+  output wire rear_light
 );
-
-  // Initialize the beat32 module
-  reg [21:0]load = 22'd3125000;
-  reg count_en;
-  beat32 #(22) b32(clk, load, counte_en);
   
   // Initialize the shifter module
-  reg shift_dir;
   reg [3:0] state = 4'b0001;
   reg [3:0] load_value;
   
-  shifter #() shif(shift_dir, state, load_value);
+  shifter #() shif(shift_right, state, load_value);
   
   always @(*) begin
     if(up_button == 1) begin
@@ -37,5 +34,7 @@ module programmable_blinker (
   reg out;
   
   blinker #() blink(clk, switch, reset, in, out);
+  
+  assign rear_light = out;
 
 endmodule
