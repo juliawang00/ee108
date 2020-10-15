@@ -3,7 +3,7 @@ module programmable_blinker (
   input shift_right,
   input clk,
   input rst,
-  output wire rear_light
+  output wire out_light
 );
   
   // Initialize the shifter module
@@ -36,6 +36,6 @@ module programmable_blinker (
   
   blinker #() blink(clk, switch, reset, in, out);
   
-  assign rear_light = out;
+  assign out_light = out;
 
 endmodule
