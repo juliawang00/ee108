@@ -85,6 +85,8 @@ module timer (
       endcase
   end
   
-  assign q = (out == counter) ? 1 : 0;
+  assign q = (out == counter) ? 1'b1 : 1'b0;
+  
+  //reset next
   
 endmodule
