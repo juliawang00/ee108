@@ -1,6 +1,7 @@
 // Code your design here
 module timer (
   input clk, 
+  input rst,
   input wire [3:0] load_value, 
   input wire count_en,
   input wire fast,
@@ -45,23 +46,22 @@ module timer (
         counter = 9'd256;
       end 
     end
-    
   end
   
-  reg[8:0] hold = counter;
-  wire next = 1'b0;
+  reg[8:0] next = 9'b0;
+  wire[8:0] out = 9'b0;
     
-  dffre #(1) ff(.clk (clk),
-               .r (0), 
-               .en(count_en),
-                .d (1), 
-                .q(next)
+  dffre #(9) ff(.clk(clk),
+                .r(rst), 
+                .en(count_en),
+                .d(next), 
+                .q(out)
   );
   
   //counter = counter - 1'b1;
   
-  assign q = !(|counter);
   
+  /*
   always @(*) begin
   
     if(counter == 0)begin 
@@ -73,5 +73,18 @@ module timer (
     end
     
   end
+  
+  assign q = !(|counter);
+  */
+  
+  always@(*) begin
+    casex({count_en, rst})
+      2'bx1: next = {9{1'b0}} ;
+      2'b10: next = out + 1'b1 ;
+      default: next = out;
+      endcase
+  end
+  
+  assign q = (out == counter) ? 1 : 0;
   
 endmodule
