@@ -19,15 +19,28 @@ module master_fsm_tb ();
   initial begin
     state = 3'b000;
     next = 1'b0;
+    #20
+    
     
     state = 3'b000;
     next = 1'b1;
+    #20
     
     state = 3'b001;
     next = 1'b0;
+    #20
     
     state = 3'b001;
     next = 1'b1;
+    #20
+    
+    state = 3'b010;
+    next = 1'b0;
+    #20
+    
+    state = 3'b010;
+    next = 1'b1;
+    #20
   end
 
 endmodule

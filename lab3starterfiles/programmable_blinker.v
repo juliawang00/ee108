@@ -9,7 +9,7 @@ module programmable_blinker (
   // Initialize the shifter module
   wire shift_dir;
   reg [3:0] state = 4'b0001;
-  reg [3:0] load_value;
+  wire [3:0] load_value;
   
   assign shift_dir = (shift_left) ? 1 : 0;
   
@@ -23,7 +23,7 @@ module programmable_blinker (
   
   // Initialize blinker module
   reg reset;
-  reg out;
+  wire out;
   
   blinker #() blink(clk, switch, reset, out);
   
