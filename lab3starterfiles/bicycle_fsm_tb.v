@@ -2,7 +2,7 @@ module bicycle_fsm_tb ();
   reg clk, faster, slower, next, reset;
   wire out;
 
-  bicycle_fsm #() bike(.clk(clk), .faster(faster) .slower(slower), .next(next), .reset(reset), .rear_light(out));
+  bicycle_fsm #() bike(.clk(clk), .faster(faster), .slower(slower), .next(next), .reset(reset), .rear_light(out));
   
   initial
     forever begin
