@@ -7,24 +7,11 @@ module beat32 #(parameter n = 22)
   
   dffr #(n) count(clk, rst, nextState, next);
   
-  assign nextState = (next == 22'b0) ? load : next - 1;
-  
-//   // Counter: Decrement unless next is all zeros. Then set to load.
-//   always @(*) begin
-//     if (!(|next)) begin
-//       nextState = load;
-//     end
-//     else if((|next)) begin
-//       nextState = next - 1'b1;
-//     end
-//     else begin
-//        nextState = next;
-//     end
-//   end
-  
-//   // Output high when counter reaches zero
-  assign done = !(|next);
+  assign nextState = (next == 0) ? load : next - 1;
 
+  assign done = (next == 0) ? 1 : 0;
+	//assign done = next;
+  
 endmodule
 
 
