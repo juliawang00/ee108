@@ -4,7 +4,7 @@ module master_fsm (
   input clk,
   input rst,
   input next,
-  input [3:0] state,
+  input [2:0] state,
   output wire [1:0] mux_input,
   output wire shift_left_1,
   output wire shift_right_1,
