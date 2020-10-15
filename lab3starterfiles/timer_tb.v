@@ -20,9 +20,30 @@ module timer_tb ();
    #10 rst = 1;
    #10 rst = 0;
    
-   rst = 1;
+   rst = 0;
    load_value = 4'b0001; 
    fast = 1'b1;
+   count_en = 1'b1;
+   
+   #100 $display("Load Value: %b, Fast: %b, count_en: %b, OUT: %d", load_value, fast, count_en, q); 
+   
+    #10
+   $display("The output has gone to %b", q);
+    #10
+   $display("The output has gone to %b", q);
+    #10
+   $display("The output has gone to %b", q);
+    #10
+   $display("The output has gone to %b", q);
+    #10
+   $display("The output has gone to %b", q);
+	
+   #10 rst = 0;
+   #10 rst = 1;
+   #10 rst = 0;
+   
+   load_value = 4'b1000; 
+   fast = 1'b0;
    count_en = 1'b1;
    
    #100 $display("Load Value: %b, Fast: %b, count_en: %b, OUT: %d", load_value, fast, count_en, q); 
