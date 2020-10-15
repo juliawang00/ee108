@@ -1,7 +1,7 @@
 module beat32_tb ();
   reg clk, reset;
   reg [21:0] load;
-  wire [21:0]done;
+  wire done;
   
   
   // Initiate beat module
