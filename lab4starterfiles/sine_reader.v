@@ -8,6 +8,9 @@ module sine_reader(
   	output wire [15:0] sample
 );
   
+    //Need to be adding 22 bits, using the first teo bits to understand what quadrant I am in 
+    //if Q1 add step size, if Q2 subtract step size, if Q3 add step size negate reuslt, if Q4 subract step size negate result
+    
   	wire [19:0] current;
   	wire [19:0] nextState;
   
