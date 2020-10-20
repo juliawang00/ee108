@@ -31,7 +31,7 @@ module sine_reader(
                     .q(current));
   
   reg [9:0] curr_add;
-  reg[15:0] curr_freq;
+  wire[15:0] curr_freq;
   
     sine_rom #() ROM(.clk(clk),
                      .addr(curr_add),
