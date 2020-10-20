@@ -14,15 +14,14 @@ module note_player(
     
     // Define the states
     'define INITIAL_STATE  1'd0
-    'define LOOK_UP 1'd0
-    'define SINE_WAVE 1'd0
-    'define PAUSED 1'd0
-    'define NOTE_COMPLETE 1'd0
-    'define PLAYING_NOTE 1'd0
+    'define LOOK_UP 1'd1
+    'define SINE_WAVE 1'd2
+    'define PAUSED 1'd3
+    'define NOTE_COMPLETE 1'd4
+    'define PLAYING_NOTE 1'd5
     
     reg [1:0] next_state, state;
-    dffre #(2) count(.clk(clk), .r(reset), .en(play_enable), .d(next_state), .q(state));
-    dffre #(6) duration(.clk(clk), .r(reset), .en(play_enable), .d(next_state), .q(state));
+    dffre #(2) count(.clk(clk), .r(reset), .d(next_state), .q(state));
     
     reg [19:0] step_size;
     frequency_rom #() ROM(.clk(clk), .addr(note_to_load), .dout(step_size));
@@ -38,25 +37,20 @@ module note_player(
     always @(*) begin
         case(state)
             'INITIAL_STATE: begin
-                state = next_state;
-                next_state = SINE_WAVE;
+                next_state = LOOK_UP;
                 counter = 6'd0;
                 note_done = 1'd0;
             end
             'LOOK_UP: begin
-                // activitate and wait for the step_size lookup
+                next_state = SINE_WAVE;
             end
             'SINE_WAVE: begin
-                // activate and wait for the sine wave synthesis
+                next_state = PLAYING_NOTE;
             end
             'PAUSED: begin
                 // if we are in pause, wait for the play enable to go again
-                if(play_enable == 0) begin
-                    state = next_state;
-                    next_state = NOTE_COMPLETE;
-                end
-                else begin
-                    state = PAUSED;
+                if(play_enable == 1) begin
+                    next_state = PLAYING_NOTE;
                 end
             end
             'PLAYING_NOTE begin
@@ -69,13 +63,11 @@ module note_player(
                     counter = reset ? 0 : counter + 1;
                 end
                 else begin
-                    state = next_state;
                     next_state = INITIAL_STATE;
                 end
             end
             'NOTE_COMPLETE: begin
                 // tell all modules the current note has finished
-                state = next_state;
                 next_state = LOOK_UP;
                 note_done = 1'd1;
             end
