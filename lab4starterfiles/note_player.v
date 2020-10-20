@@ -21,7 +21,11 @@ module note_player(
     'define PLAYING_NOTE 1'd5
     
     reg [1:0] next_state, state;
-    dffre #(2) count(.clk(clk), .r(reset), .d(next_state), .q(state));
+    dffr #(2) count(.clk(clk), .r(reset), .d(next_state), .q(state));
+    
+    reg [5:0] counter;
+    reg [5:0] counter_next;
+    dffre #(6) duration(.clk(clk), .r(reset), .en(play_enable), .d(counter_next), .q(counter));
     
     reg [19:0] step_size;
     frequency_rom #() ROM(.clk(clk), .addr(note_to_load), .dout(step_size));
@@ -31,7 +35,6 @@ module note_player(
     wire [15:0] sample; // holds sine wave generated
     sine_reader #() SIN(.clk(clk), .reset(reset), .step_size(step_size), .generate_next(should_generate), .sample_ready(sample_ready), .sample(sample));
     
-    reg [5:0] counter = 6'd0;
     reg note_done = 1'd0;
 
     always @(*) begin
@@ -60,7 +63,7 @@ module note_player(
                     next_state = PLAYING_NOTE;
                 end
                 else if(counter < duration_to_load) begin
-                    counter = reset ? 0 : counter + 1;
+                    counter_next = reset ? 0 : counter_next + 1;
                 end
                 else begin
                     next_state = INITIAL_STATE;
