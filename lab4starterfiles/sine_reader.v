@@ -5,7 +5,9 @@ module sine_reader(
     input generate_next,
 
     output sample_ready,
-  output wire [15:0] sample
+  output wire [15:0] sample,
+  output wire [21:0] all,
+  output wire [1:0] quad
 );
   
     //Need to be adding 22 bits, using the first teo bits to understand what quadrant I am in 
@@ -13,7 +15,6 @@ module sine_reader(
     
   `define INITIAL_STATE  6'b000001
   `define GENERATE       6'b000010
-  `define SET_NEXT       6'b000100
   `define SEARCH         6'b001000
   `define WAIT           6'b010000
   `define SET            6'b100000
@@ -87,7 +88,7 @@ module sine_reader(
           `SET: begin
             next_state_d = `INITIAL_STATE;
             
-            curr_sample = (current[21]) ? 0 - curr_freq : curr_freq;
+            curr_sample = (quadrant == 2 || quadrant == 2) ? 0 - curr_freq : curr_freq;
             sampleReady = 1'b1;
             
             if (current[20] && quadrant != 1) begin
@@ -111,5 +112,7 @@ module sine_reader(
   
   assign sample = curr_sample;
   assign sample_ready = sampleReady;
+  assign all = current;
+  assign quad = quadrant;
   
 endmodule
