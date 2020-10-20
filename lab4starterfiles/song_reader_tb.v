@@ -29,7 +29,70 @@ module song_reader_tb();
 
     // Tests
     initial begin
+        #20
+        song = 2'b0;
+        play = 1;
+        note_done = 0;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+  
+        play = 1;
+        note_done = 0;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        play = 1;
+        note_done = 1;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        
+        play = 1;
+        note_done = 0;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        
+        play = 1;
+        note_done = 1;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        play = 1;
+        note_done = 0;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        
+        play = 1;
+        note_done = 1;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        play = 0;
+        note_done = 0;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        
+        play = 1;
+        note_done = 0;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        play = 1;
+        note_done = 1;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        
+        
+        play = 1;
+        note_done = 1;
+        #10
+        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
 
+        $Stop
     end
 
 endmodule
