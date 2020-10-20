@@ -31,11 +31,17 @@ module note_player(
     reg sample_ready;
     wire [15:0] sample; // holds sine wave generated
     sine_reader #() SIN(.clk(clk), .reset(reset), .step_size(step_size), .generate_next(should_generate), .sample_ready(sample_ready), .sample(sample));
+    
+    reg [5:0] counter = 6'd0;
+    reg note_done = 1'd0;
 
     always @(*) begin
         case(state)
             'INITIAL_STATE: begin
-                // set intial values
+                state = next_state;
+                next_state = SINE_WAVE;
+                counter = 6'd0;
+                note_done = 1'd0;
             end
             'LOOK_UP: begin
                 // activitate and wait for the step_size lookup
@@ -69,8 +75,15 @@ module note_player(
             end
             'NOTE_COMPLETE: begin
                 // tell all modules the current note has finished
+                state = next_state;
+                next_state = LOOK_UP;
+                note_done = 1'd1;
             end
         endcase
     end
+    
+    assign new_sample_ready = sample_ready;
+    assign done_with_note = note_done;
+    assign sample_out = sample;
 
 endmodule
