@@ -77,11 +77,11 @@ module song_reader(
             `CHECK_DONE : begin
                 // If I get rid of WAIT, put this inside the next if-statement.
                 if(note_done && play && n_state != 31) //Maybe state != 31
-                    n_state = state + 1; // Increment one to get the next note.
+                    n_state = state + 5'b1; // Increment one to get the next note.
                     next_state_d = `INCREMENTED;
                 else
                     if (n_state == 31)
-                        n_state = state + 1; // Increment to start at index 00 for next song.
+                        n_state = state + 5'b1; // Increment to start at index 00 for next song.
                         song_done = 1;
                     else // Wait case
                         song_done = 0;
