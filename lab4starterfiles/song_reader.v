@@ -42,11 +42,13 @@ module song_reader(
     
 
     // Assign new note values if in check_done state, otherwise keep the values the same and set new_note to zero.
-    assign {new_note, note, duration} = (current_state_q == `CHECK_DONE) ? {1'b1, returned_note} : {1'b0, note, duration}; 
+    assign {new_note, note, duration} = (current_state_q == `ROM_OUT) ? {1'b1, returned_note} : {1'b0, note, duration}; 
     
     // Next state logic
     always @(*)
         case (current_state_q)
+            // Question if I need this state. Could implement it in default most likely.
+            
             // RESET: When the reset button is pressed, the increment clock starts at 0. This is also the wait state
             // in case pause is pressed. In this case, the increment clock retains its last value. In both cases,
             // we only proceed to the next state if play is pressed.
@@ -64,26 +66,29 @@ module song_reader(
                 
             end
             
-            // This state represents the cycle it takes to read from the ROM. At the end, 
+            // This state represents the cycle it takes to read from the ROM. At the end, new values for duration and song have been found.
+            // The assign statement above this mux assigns these values for note_reader to read.
             `ROM_OUT : begin
                 next_state_d = `CHECK_DONE;
                 
             end
             
-            //
+            // This is the wait state for note_reader to tell us to get a new note
             `CHECK_DONE : begin
-                n_state = state + 1; // Always increment one
-                if(note_done && play && n_state != 0) //Maybe state != 31
+                // If I get rid of WAIT, put this inside the next if-statement.
+                if(note_done && play && n_state != 31) //Maybe state != 31
+                    n_state = state + 1; // Increment one to get the next note.
                     next_state_d = `INCREMENTED;
                 else
-                    if (n_state == 0)
+                    if (n_state == 31)
+                        n_state = state + 1; // Increment to start at index 00 for next song.
                         song_done = 1;
-                    else
+                    else // Wait case
                         song_done = 0;
-                    next_state_d = `WAIT;  
+                    next_state_d = `CHECK_DONE;  
             end
             
-            //
+            // Default. This could potentially take the place of the WAIT state.
             default : begin
                 next_state_d = `RESET;
                 n_state = reset ? 5'b0 : n_state;
