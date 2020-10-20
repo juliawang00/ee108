@@ -21,9 +21,10 @@ module sine_reader(
   
   reg sampleReady;
   reg genNext;
-  reg searching;
   reg [2:0] quadrant;
+  reg [15:0] curr_sample;
   
+  //Step Size flip flop
   wire [21:0] current;
   reg [21:0] nextState;
   
@@ -33,7 +34,7 @@ module sine_reader(
                     .d(nextState), 
                     .q(current));
   
-  
+  //ROM for frequency
   reg [9:0] curr_add;
   wire[15:0] curr_freq;
   
@@ -41,12 +42,10 @@ module sine_reader(
                      .addr(curr_add),
                      .dout(curr_freq));
  
-  
+  //State flip flop
   reg [5:0] next_state_d;
   wire [5:0] current_state_q;
-  
-  reg [15:0] curr_sample;
-  
+ 
   dffr #(6) state(
         .clk(clk),
         .d(next_state_d),
@@ -57,14 +56,14 @@ module sine_reader(
         case (current_state_q)
           
           `INITIAL_STATE: begin
-            sampleReady = 1'b0;
-            searching = 1'b0;
+	
             if(generate_next) begin
             	next_state_d = `GENERATE;	
             end
             else begin
               next_state_d = `INITIAL_STATE;
             end
+            
           end
           
           `GENERATE: begin
@@ -77,7 +76,6 @@ module sine_reader(
           `SEARCH: begin
             //genNext = 1'b0;
             next_state_d = `WAIT;
-            searching = 1'b1;
             curr_add = current >> 10;
           end
           
@@ -88,7 +86,7 @@ module sine_reader(
           `SET: begin
             next_state_d = `INITIAL_STATE;
             
-            curr_sample = (quadrant == 2 || quadrant == 2) ? 0 - curr_freq : curr_freq;
+            curr_sample = (quadrant == 2 || quadrant == 3) ? 0 - curr_freq : curr_freq;
             sampleReady = 1'b1;
             
             if (current[20] && quadrant != 1) begin
@@ -104,15 +102,7 @@ module sine_reader(
           default: begin 
             next_state_d = `INITIAL_STATE;
             sampleReady = 1'b0;
-            searching = 1'b0;
             quadrant = 2'b00;
           end
         
    endcase
-  
-  assign sample = curr_sample;
-  assign sample_ready = sampleReady;
-  assign all = current;
-  assign quad = quadrant;
-  
-endmodule
