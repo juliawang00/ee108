@@ -45,9 +45,27 @@ module note_player(
             end
             'PAUSED: begin
                 // if we are in pause, wait for the play enable to go again
+                if(play_enable == 0) begin
+                    state = next_state;
+                    next_state = NOTE_COMPLETE;
+                end
+                else begin
+                    state = PAUSED;
+                end
             end
             'PLAYING_NOTE begin
                 // increment counter for duration
+                if(play_enable == 0) begin
+                    state = PAUSED;
+                    next_state = PLAYING_NOTE;
+                end
+                else if(counter < duration_to_load) begin
+                    counter = reset ? 0 : counter + 1;
+                end
+                else begin
+                    state = next_state;
+                    next_state = INITIAL_STATE;
+                end
             end
             'NOTE_COMPLETE: begin
                 // tell all modules the current note has finished
