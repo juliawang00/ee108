@@ -6,13 +6,17 @@ module sine_reader_tb();
     reg [19:0] step_size;
     wire sample_ready;
   wire [15:0] sample;
+  wire[21:0] all;
+  wire [1:0] quad;
     sine_reader reader(
         .clk(clk),
         .reset(reset),
         .step_size(step_size),
         .generate_next(generate_next),
         .sample_ready(sample_ready),
-        .sample(sample)
+      .sample(sample),
+      .all(all),
+      .quad(quad)
     );
 
     // Clock and reset
@@ -26,31 +30,15 @@ module sine_reader_tb();
 
     // Tests
     initial begin
-      step_size = 19'b00000010101000000000;
+      step_size = 19'b0001010101000000000;
       generate_next = 1;
       
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-      #10
-      $display("next state = %d, step size = %d", sample, step_size);
-    end
+      repeat(750) begin
+              #10
+        $display("next state = %d, current = %b, sample_redy = %d, quad = %d", sample, all, sample_ready, quad);
+      end
+      
+
+   end
 
 endmodule
