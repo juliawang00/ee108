@@ -81,8 +81,6 @@ module sine_reader(
             next_state_d = `WAIT;
             sampleReady = 1'b0;
             genNext = 1'b0;
-            
-            //curr_add = current >> 10;
           end
           
           `WAIT: begin
@@ -94,9 +92,7 @@ module sine_reader(
           `SET: begin
             next_state_d = `INITIAL_STATE;
             sampleReady = 1'b1;
-            genNext = 1'b0;
-            
-            //curr_sample = (quadrant == 2 || quadrant == 3) ? 0 - curr_freq : curr_freq;      
+            genNext = 1'b0;              
           end 
           
           default: begin 
@@ -107,7 +103,7 @@ module sine_reader(
         
    endcase
   
-  assign sample = curr_sample;
-  assign sample_ready = (curr_sample) ? sampleReady : 0;
+  assign sample_ready = sampleReady;
+  assign sample = (sampleReady) ? curr_sample : 16'b0;
 
 endmodule
