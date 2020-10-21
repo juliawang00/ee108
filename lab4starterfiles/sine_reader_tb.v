@@ -1,22 +1,17 @@
-// Code your testbench here
-// or browse Examples
 module sine_reader_tb();
 
     reg clk, reset, generate_next;
     reg [19:0] step_size;
     wire sample_ready;
   wire [15:0] sample;
-  wire[21:0] all;
-  wire [1:0] quad;
+  
     sine_reader reader(
         .clk(clk),
         .reset(reset),
         .step_size(step_size),
         .generate_next(generate_next),
         .sample_ready(sample_ready),
-      .sample(sample),
-      .all(all),
-      .quad(quad)
+      .sample(sample)
     );
 
     // Clock and reset
@@ -27,6 +22,9 @@ module sine_reader_tb();
         reset = 1'b0;
         forever #5 clk = ~clk;
     end
+  //copy clock but say gen_next
+  
+  
 
     // Tests
     initial begin
@@ -34,8 +32,8 @@ module sine_reader_tb();
       generate_next = 1;
       
       repeat(750) begin
-              #10
-        $display("next state = %d, current = %b, sample_redy = %d, quad = %d", sample, all, sample_ready, quad);
+         #10
+        $display("next freq = %d, sample ready = %d", sample, sample_ready);
       end
       
 
