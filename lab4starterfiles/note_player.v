@@ -13,25 +13,26 @@ module note_player(
 );
     
     // Define the states
-    'define INITIAL_STATE  1'd0
-    'define LOOK_UP 1'd1
-    'define SINE_WAVE 1'd2
-    'define PAUSED 1'd3
-    'define NOTE_COMPLETE 1'd4
-    'define PLAYING_NOTE 1'd5
+    `define INITIAL_STATE  3'b0
+    `define LOOK_UP 3'b1
+    `define SINE_WAVE 3'b10
+    `define PAUSED 3'b11
+    `define NOTE_COMPLETE 3'b100
+    `define PLAYING_NOTE 3'b101
     
-    reg [1:0] next_state, state;
-    dffr #(2) count(.clk(clk), .r(reset), .d(next_state), .q(state));
+  reg [2:0] next_state; 
+  wire [2:0] state;
+  dffr #(3) count(.clk(clk), .r(reset), .d(next_state), .q(state));
     
-    reg [5:0] counter;
+    wire [5:0] counter;
     reg [5:0] counter_next;
-    dffre #(6) duration(.clk(clk), .r(reset), .en(play_enable), .d(counter_next), .q(counter));
+    dffre #(6) duration(.clk(clk), .r(reset), .en(beat), .d(counter_next), .q(counter));
     
-    reg [19:0] step_size;
+    wire [19:0] step_size;
     frequency_rom #() ROM(.clk(clk), .addr(note_to_load), .dout(step_size));
     
-    reg should_generate = load_new_note || generate_next_sample;
-    reg sample_ready;
+    wire should_generate = load_new_note || generate_next_sample;
+    wire sample_ready;
     wire [15:0] sample; // holds sine wave generated
     sine_reader #() SIN(.clk(clk), .reset(reset), .step_size(step_size), .generate_next(should_generate), .sample_ready(sample_ready), .sample(sample));
     
@@ -39,54 +40,54 @@ module note_player(
 
     always @(*) begin
         case(state)
-            'INITIAL_STATE: begin
-                counter = 6'd0;
+            `INITIAL_STATE: begin
+                counter_next = 6'd0;
                 note_done = 1'd0;
                 if(load_new_note == 1'd1) begin
-                    next_state = LOOK_UP;
+                    next_state = `LOOK_UP;
                 end else begin
-                    next_state = INTIAL_STATE;
+                    next_state = `INITIAL_STATE;
                 end
             end
-            'LOOK_UP: begin
-                counter = 6'd0;
+            `LOOK_UP: begin
+                counter_next = 6'd0;
                 note_done = 1'd0;
-                next_state = SINE_WAVE;
+                next_state = `SINE_WAVE;
             end
-            'SINE_WAVE: begin
-                counter = 6'd0;
+            `SINE_WAVE: begin
+                counter_next = 6'd0;
                 note_done = 1'd0;
-                next_state = PLAYING_NOTE;
+                next_state = `PLAYING_NOTE;
             end
-            'PAUSED: begin
+            `PAUSED: begin
                 // if we are in pause, wait for the play enable to go again
                 note_done = 1'd0;
                 if(play_enable == 1) begin
-                    next_state = PLAYING_NOTE;
+                    next_state = `PLAYING_NOTE;
                 end
             end
-            'PLAYING_NOTE begin
+            `PLAYING_NOTE: begin
                 // increment counter for duration
                 note_done = 1'd0;
                 if(play_enable == 0) begin
-                    state = PAUSED;
-                    next_state = PLAYING_NOTE;
+                    next_state = `PLAYING_NOTE;
                 end
-                else if(counter < duration_to_load) begin
+              else if(counter < duration_to_load) begin
                     counter_next = reset ? 0 : counter_next + 1;
                 end
                 else begin
-                    next_state = INITIAL_STATE;
+                    next_state = `INITIAL_STATE;
                 end
             end
-            'NOTE_COMPLETE: begin
+            `NOTE_COMPLETE: begin
                 // tell all modules the current note has finished
-                next_state = LOOK_UP;
+                next_state = `LOOK_UP;
                 note_done = 1'd1;
             end
         endcase
     end
     
+  	
     assign new_sample_ready = sample_ready;
     assign done_with_note = note_done;
     assign sample_out = sample;
