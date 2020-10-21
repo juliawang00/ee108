@@ -40,24 +40,34 @@ module note_player(
     always @(*) begin
         case(state)
             'INITIAL_STATE: begin
-                next_state = LOOK_UP;
                 counter = 6'd0;
                 note_done = 1'd0;
+                if(load_new_note == 1'd1) begin
+                    next_state = LOOK_UP;
+                end else begin
+                    next_state = INTIAL_STATE;
+                end
             end
             'LOOK_UP: begin
+                counter = 6'd0;
+                note_done = 1'd0;
                 next_state = SINE_WAVE;
             end
             'SINE_WAVE: begin
+                counter = 6'd0;
+                note_done = 1'd0;
                 next_state = PLAYING_NOTE;
             end
             'PAUSED: begin
                 // if we are in pause, wait for the play enable to go again
+                note_done = 1'd0;
                 if(play_enable == 1) begin
                     next_state = PLAYING_NOTE;
                 end
             end
             'PLAYING_NOTE begin
                 // increment counter for duration
+                note_done = 1'd0;
                 if(play_enable == 0) begin
                     state = PAUSED;
                     next_state = PLAYING_NOTE;
