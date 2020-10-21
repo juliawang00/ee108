@@ -36,7 +36,7 @@ module song_reader_tb();
         note_done = 1;
         repeat(100) begin
             #10
-            $display("Playing new_note %d in song %d, which is note %d duration %d and song_done %d", new_note, song, note, duration, song_done);
+            $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
         
         
