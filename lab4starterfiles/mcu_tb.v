@@ -23,9 +23,73 @@ module mcu_tb();
         forever #5 clk = ~clk;
     end
 
-    // Tests
+    // Tests: Want to make sure we are keeping track of the song currently being played and controlling state of overall system
     initial begin
-
+        play_button = 1'b0;
+        next_button = 1'b0;
+        song_done = 1'b0;
+        
+        #20
+        $display("Currently everything should be off.");
+        
+        #20
+        $display("Play first song from the beginning.");
+        play_button = 1'b1;
+        #20
+        repeat(30) begin
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        #20
+        $display("Pausing first song after 30 loops");
+        play_button = 1'b0;
+        repeat(20) begin
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        #20
+        $display("Playing first song after paused for 20 loops");
+        play_button = 1'b1;
+        repeat(20) begin
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        #20
+        $display("Skipping to next song, then should sit and wait paused");
+        next_button = 1'b1;
+        repeat(20) begin
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        #20
+        $display("Playing second song all the way to the end");
+        play_button = 1'b1;
+        repeat(200) begin //I don't actually know if this was enough cycles??
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        #20
+        $display("Should have reached third song and waiting in paused. Skipping to fourth song.");
+        next_button = 1'b1;
+        repeat(20) begin
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        #20
+        $display("Should have skipped to fourth song and waiting in paused. Skipping back to first song.");
+        next_button = 1'b1;
+        repeat(20) begin
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
+        end
+        
+        
     end
 
 endmodule
