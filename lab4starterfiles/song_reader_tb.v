@@ -30,69 +30,108 @@ module song_reader_tb();
     // Tests
     initial begin
         #20
-        song = 2'b0;
-        play = 1;
-        note_done = 0;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
-  
-        play = 1;
-        note_done = 0;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
+        $display("This first test is to see if we proceed through the first song with no problems.");
+        song = 2'b00;
         play = 1;
         note_done = 1;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        repeat(34) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
         
         
-        play = 1;
-        note_done = 0;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
         
         
-        play = 1;
-        note_done = 1;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
-        play = 1;
-        note_done = 0;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
-        
+        $display("This test starts and stops the second song after ten iterations.");
+        song = 2'b01;
         play = 1;
         note_done = 1;
+        repeat(10) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
         #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
+        $display("Song paused");
         play = 0;
-        note_done = 0;
+        repeat(10) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
         #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
+        $display("Start it up again");
+        play = 0;
+        repeat(10) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
         
         
-        play = 1;
-        note_done = 0;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
-        play = 1;
-        note_done = 1;
-        #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-        
-        
+        $display("This test plays the third song and after ten iterations turns note_done to 0.");
         play = 1;
         note_done = 1;
+        repeat(10) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
         #10
-        $display("Playing note %d of song %d, which is note %d duration %d",note_address, song, note, duration);
-
-        $Stop
+        $display("Set note_done to 0.");
+        note_done = 0;
+        repeat(10) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
+        #10
+        $display("Set note_done to 1.");
+        note_done = 1;
+        repeat(10) begin
+            #10
+            $display("Playing song %d, which is note %d duration %d", song, note, duration);
+        end
+        
+        
+        
+//         play = 1;
+//         note_done = 0;
+//         repeat(34) begin
+//             #10
+//             $display("Playing song %d, which is note %d duration %d", song, note, duration);
+//         end
+        
+        
+        
+//         play = 1;
+//         note_done = 1;
+//         repeat(34) begin
+//             #10
+//             $display("Playing song %d, which is note %d duration %d", song, note, duration);
+//         end
+        
+        
+//         play = 1;
+//         note_done = 0;
+//         repeat(34) begin
+//             #10
+//             $display("Playing song %d, which is note %d duration %d", song, note, duration);
+//         end
+        
+        
+//         play = 1;
+//         note_done = 1;
+//         repeat(34) begin
+//             #10
+//             $display("Playing song %d, which is note %d duration %d", song, note, duration);
+//         end
+        
+//         play = 0;
+//         note_done = 0;
+//         repeat(34) begin
+//             #10
+//             $display("Playing song %d, which is note %d duration %d", song, note, duration);
+//         end
+        
+        
+       
+        $stop;
     end
 
 endmodule
