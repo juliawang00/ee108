@@ -1,3 +1,5 @@
+// Code your testbench here
+// or browse Examples
 module sine_reader_tb();
 
     reg clk, reset, generate_next;
@@ -28,9 +30,27 @@ module sine_reader_tb();
 
     // Tests
     initial begin
-      step_size = 19'b0001010101000000000;
       generate_next = 1;
       
+      step_size = 19'b0001010101000000000;
+      repeat(500) begin
+         #10
+        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+      end
+      
+            step_size = 19'b0001111111100100100;
+      repeat(500) begin
+         #10
+        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+      end
+      
+            step_size = 19'b0001010101010001111;
+      repeat(500) begin
+         #10
+        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+      end
+      
+            step_size = 19'b0000000101010001001;
       repeat(500) begin
          #10
         $display("next freq = %d, sample ready = %d", sample, sample_ready);
@@ -38,4 +58,5 @@ module sine_reader_tb();
       
 	$stop;
    end
+
 endmodule
