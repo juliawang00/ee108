@@ -26,36 +26,46 @@ module sine_reader_tb();
     end
   //copy clock but say gen_next
   
-  
+  	initial begin
+        generate_next = 1'b0;
+        reset = 1'b1;
+      repeat (10000) #10 generate_next = ~generate_next;
+        reset = 1'b0;
+    end
 
     // Tests
     initial begin
-      generate_next = 1;
+      //generate_next = 1;
       
       step_size = 19'b0001010101000000000;
       repeat(500) begin
          #10
-        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+        $display("next freq = %d, sample ready = %d, generate next = %d", sample, sample_ready, generate_next);
       end
       
             step_size = 19'b0001111111100100100;
       repeat(500) begin
          #10
-        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+        $display("next freq = %d, sample ready = %d, generate next = %d", sample, sample_ready, generate_next);
       end
       
             step_size = 19'b0001010101010001111;
       repeat(500) begin
          #10
-        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+        $display("next freq = %d, sample ready = %d, generate next = %d", sample, sample_ready, generate_next);
       end
       
             step_size = 19'b0000000101010001001;
-      repeat(500) begin
+      repeat(1000) begin
          #10
-        $display("next freq = %d, sample ready = %d", sample, sample_ready);
+        $display("next freq = %d, sample ready = %d, generate next = %d", sample, sample_ready, generate_next);
       end
       
+      step_size = 19'b0010110101010001001;
+      repeat(500) begin
+         #10
+        $display("next freq = %d, sample ready = %d, generate next = %d", sample, sample_ready, generate_next);
+      end
 	$stop;
    end
 
