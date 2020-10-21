@@ -19,11 +19,11 @@ module sine_reader(
   
   reg sampleReady;
   reg genNext;
-  reg [15:0] curr_sample;
+  wire [15:0] curr_sample;
   
   //Step Size flip flop
   wire [21:0] current;
-  reg [21:0] nextState;
+  wire [21:0] nextState;
   
   dffre #(22) count(.clk(clk), 
                     .r(reset), 
@@ -32,7 +32,7 @@ module sine_reader(
                     .q(current));
   
   //ROM for frequency
-  reg [9:0] curr_add;
+  wire [9:0] curr_add;
   wire[15:0] curr_freq;
   
     sine_rom #() ROM(.clk(clk),
