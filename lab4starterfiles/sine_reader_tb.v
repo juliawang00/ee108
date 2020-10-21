@@ -62,7 +62,7 @@ module sine_reader_tb();
       end
       
       step_size = 19'b0010110101010001001;
-      repeat(500) begin
+	    repeat(1000) begin
          #10
         $display("next freq = %d, sample ready = %d, generate next = %d", sample, sample_ready, generate_next);
       end
