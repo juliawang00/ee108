@@ -104,6 +104,6 @@ module sine_reader(
    endcase
   
   assign sample_ready = sampleReady;
-  assign sample = (sampleReady) ? curr_sample : 16'b0;
+  assign sample = curr_sample;
 
 endmodule
