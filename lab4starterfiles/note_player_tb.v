@@ -41,7 +41,43 @@ module note_player_tb();
 
     // Tests
     initial begin
-
+      // this is just a general test
+		#20
+      	note_to_load = 5'b00101;
+      	duration_to_load = 5'b01111;
+      	load_new_note = 1'b1;
+      	generate_next_sample = 1'b0;
+      play_enable = 1'b1;
+      repeat(100) begin
+        #10
+        $display("Output: %b", sample_out);
+      end
+      
+      // test pausing
+      $display("Playing note");
+      #20
+      	note_to_load = 5'b00101;
+      	duration_to_load = 5'b01111;
+      	load_new_note = 1'b1;
+      	generate_next_sample = 1'b0;
+      repeat(100) begin
+        #10
+        $display("Output: %b", sample_out);
+      end
+      repeat(20) begin
+        #10
+        $display("playing: %b, output is %b", play_enable, sample_out);
+      end
+      
+      play_enable = 1'b0;
+      $display("Paused note");
+      repeat(10) begin
+        #10
+        $display("playing: %b, output is %b", play_enable, sample_out);
+      end
+      
+      
+      $stop;
     end
 
 endmodule
