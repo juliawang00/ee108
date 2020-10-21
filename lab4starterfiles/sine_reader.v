@@ -5,23 +5,20 @@ module sine_reader(
     input generate_next,
 
     output sample_ready,
-  output wire [15:0] sample,
-  output wire [21:0] all,
-  output wire [1:0] quad
+    output wire [15:0] sample
 );
   
     //Need to be adding 22 bits, using the first teo bits to understand what quadrant I am in 
     //if Q1 add step size, if Q2 subtract step size, if Q3 add step size negate reuslt, if Q4 subract step size negate result
     
-  `define INITIAL_STATE  6'b000001
-  `define GENERATE       6'b000010
-  `define SEARCH         6'b001000
-  `define WAIT           6'b010000
-  `define SET            6'b100000
+  `define INITIAL_STATE  5'b00001
+  `define GENERATE       5'b00010
+  `define SEARCH         5'b00100
+  `define WAIT           5'b01000
+  `define SET            5'b10000
   
   reg sampleReady;
   reg genNext;
-  reg [2:0] quadrant;
   reg [15:0] curr_sample;
   
   //Step Size flip flop
@@ -51,12 +48,18 @@ module sine_reader(
         .d(next_state_d),
         .q(current_state_q),
         .r(reset));
+  
+  
+  assign nextState = (genNext) ? current + step_size : current;
+  
+  assign curr_add = (current[20]) ?  0 - (current >> 10) : current >> 10; 
+  
+  assign curr_sample = (current[21]) ? 0 - curr_freq : curr_freq;
   	
   always @(*)
         case (current_state_q)
           
           `INITIAL_STATE: begin
-	
             if(generate_next) begin
             	next_state_d = `GENERATE;	
             end
@@ -64,45 +67,47 @@ module sine_reader(
               next_state_d = `INITIAL_STATE;
             end
             
+			sampleReady = 1'b0;
+            genNext = 1'b0;
           end
           
           `GENERATE: begin
             next_state_d = `SEARCH;
+            sampleReady = 1'b0;
             genNext = 1'b1;
-
-            nextState = (quadrant[0]) ? current - step_size : current + step_size;
           end
           
           `SEARCH: begin
-            //genNext = 1'b0;
             next_state_d = `WAIT;
-            curr_add = current >> 10;
+            sampleReady = 1'b0;
+            genNext = 1'b0;
+            
+            //curr_add = current >> 10;
           end
           
           `WAIT: begin
             next_state_d = `SET;
+            sampleReady = 1'b0;
+            genNext = 1'b0;
           end
           
           `SET: begin
             next_state_d = `INITIAL_STATE;
-            
-            curr_sample = (quadrant == 2 || quadrant == 3) ? 0 - curr_freq : curr_freq;
             sampleReady = 1'b1;
+            genNext = 1'b0;
             
-            if (current[20] && quadrant != 1) begin
-              quadrant = quadrant + 1'b1;
-            end
-            
-            if(!(|current)) begin
-              quadrant = quadrant + 1'b1; 
-            end
-            
+            //curr_sample = (quadrant == 2 || quadrant == 3) ? 0 - curr_freq : curr_freq;      
           end 
           
           default: begin 
             next_state_d = `INITIAL_STATE;
             sampleReady = 1'b0;
-            quadrant = 2'b00;
+            genNext = 1'b0;
           end
         
    endcase
+  
+  assign sample = curr_sample;
+  assign sample_ready = (curr_sample) ? sampleReady : 0;
+
+endmodule
