@@ -30,40 +30,39 @@ module song_reader(
     );
     
     // Implement a 32-second timer. Updates song_done if all the notes have been played and only increases when note_done is enabled
-    reg [4:0] n_state;
-    wire [4:0] state;  
-    dffre #(5) clock(.clk(clk), .r(reset), .d(n_state), .q(state)); 
+    wire [4:0] next_count;
+    wire [4:0] count;  
+    dffr #(5) clock(.clk(clk), .r(reset), .d(next_count), .q(count)); 
    
     
     // Instantiate ROM module.
-    wire [6:0] addr = {song, state};
-    wire [11:0] returned_note;
+    wire [6:0] addr = {song, count};
+    reg [11:0] returned_note;
     song_rom #() get_notes(.clk(clk), .addr(addr), .dout(returned_note));
     
 
     // Assign new note values if in check_done state, otherwise keep the values the same and set new_note to zero.
     assign {new_note, note, duration} = (current_state_q == `ROM_OUT) ? {1'b1, returned_note} : {1'b0, note, duration}; 
     
+    // Counter for the next notes to play. Constantly increment instead of reset or note is not done.
+    assign next_count = reset ? 5'b0 : ((current_state_q == `CHECK_DONE) && note_done) ? count + 5'b1 : next_count;
+    
+    // Song is done when we are in check_done state and count has reached the last note.
+    assign song_done = ((current_state_q == `CHECK_DONE) && note_done && count == 31) ? 1 : 0;
+
+    
     // Next state logic
     always @(*)
         case (current_state_q)
-            // Question if I need this state. Could implement it in default most likely.
-            
-            // RESET: When the reset button is pressed, the increment clock starts at 0. This is also the wait state
-            // in case pause is pressed. In this case, the increment clock retains its last value. In both cases,
-            // we only proceed to the next state if play is pressed.
+               
+            // RESET: Initial state from default and wait state when player is paused.
             `RESET : begin
-                n_state = reset ? 5'b0 : n_state; // Reset if reset button is on, otherwise keep with previous state. Necessary for pausing and playing.
-                if(play)
-                    next_state_d = `INCREMENTED;
-                else
-                    next_state_d = `RESET;
+                next_state_d = play ? `INCREMENTED : `RESET;
             end
             
             // When play is pressed, we come to this state to represent that a cycle has passed and now state holds n_state value. Move to ROM_OUT no matter what.
             `INCREMENTED : begin
-                next_state_d = `ROM_OUT;
-                
+                next_state_d = `ROM_OUT;             
             end
             
             // This state represents the cycle it takes to read from the ROM. At the end, new values for duration and song have been found.
@@ -74,25 +73,13 @@ module song_reader(
             end
             
             // This is the wait state for note_reader to tell us to get a new note
-            `CHECK_DONE : begin
-                // If I get rid of WAIT, put this inside the next if-statement.
-                if(note_done && play && n_state != 31) //Maybe state != 31
-                    n_state = state + 5'b1; // Increment one to get the next note.
-                    next_state_d = `INCREMENTED;
-                else
-                    if (n_state == 31)
-                        n_state = state + 5'b1; // Increment to start at index 00 for next song.
-                        song_done = 1;
-                    else // Wait case
-                        song_done = 0;
-                    next_state_d = `CHECK_DONE;  
+            `CHECK_DONE : begin             
+                next_state_d = !note_done ? `CHECK_DONE : (count != 31) ? `INCREMENTED : `RESET;
             end
             
-            // Default. This could potentially take the place of the WAIT state.
+            // Default.
             default : begin
-                next_state_d = `RESET;
-                n_state = reset ? 5'b0 : n_state;
-                
+                next_state_d = `RESET;                
             end        
                         
         endcase
