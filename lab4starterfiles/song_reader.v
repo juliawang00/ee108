@@ -45,7 +45,7 @@ module song_reader(
     assign {new_note, note, duration} = (current_state_q == `ROM_OUT) ? {1'b1, returned_note} : {1'b0, note, duration}; 
     
     // Counter for the next notes to play. Constantly increment instead of reset or note is not done.
-    assign next_count = reset ? 5'b0 : ((current_state_q == `CHECK_DONE) && note_done) ? count + 5'b1 : next_count;
+    assign next_count = reset ? 5'b0 : ((current_state_q == `CHECK_DONE) && note_done && play) ? count + 5'b1 : next_count;
     
     // Song is done when we are in check_done state and count has reached the last note.
     assign song_done = ((current_state_q == `CHECK_DONE) && note_done && count == 31) ? 1 : 0;
@@ -74,7 +74,7 @@ module song_reader(
             
             // This is the wait state for note_reader to tell us to get a new note
             `CHECK_DONE : begin             
-                next_state_d = !note_done ? `CHECK_DONE : (count != 31) ? `INCREMENTED : `RESET;
+                next_state_d = !note_done ? `CHECK_DONE : (play && count != 31) ? `INCREMENTED : `RESET;
             end
             
             // Default.
