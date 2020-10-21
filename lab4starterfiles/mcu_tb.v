@@ -89,6 +89,7 @@ module mcu_tb();
             $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d", play, reset_player, song);
         end
         
+        $stop;
         
     end
 
