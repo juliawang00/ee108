@@ -139,7 +139,7 @@ module song_rom (
     assign memory[  122 ] = {6'd32, 6'd12}    ;   // Note: 3E
     assign memory[  123 ] = {6'd30, 6'd12}    ;   // Note: 3D
     assign memory[  124 ] = {6'd28, 6'd12}    ;   // Note: 3C
-    assign memory[  125 ] = {6'0, 6'd12}    ;   // Note: rest
+    assign memory[  125 ] = {6'd0, 6'd12}    ;   // Note: rest
     assign memory[  126 ] = {6'd0, 6'd12}    ;   // Note: rest
     assign memory[  127 ] = {6'd0, 6'd48}    ;   // Note: rest
 
