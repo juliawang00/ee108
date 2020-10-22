@@ -41,34 +41,23 @@ module note_player_tb();
 
     // Tests
     initial begin
-      // this is just a general test
 			#20
 			note_to_load = 5'b00101;
-			duration_to_load = 5'b01111;
+			duration_to_load = 5'b00101;
 			load_new_note = 1'b1;
 			generate_next_sample = 1'b0;
       play_enable = 1'b1;
-      repeat(100) begin
+      #20
+      repeat(20) begin
         #10
 				$display("Currently on note: %d, Duration: %d, Output: %d", note_to_load, duration_to_load, sample_out);
-				$display("Sample Ready: %d, Note done playing: %d", new_sample_ready, done_with_note);
+        $display("Playing: %d, Sample Ready: %d, Note done playing: %d", play_enable, new_sample_ready, done_with_note);
       end
-      
-	    $display("Play the note.");
-      #20
-			note_to_load = 5'b00101;
-			duration_to_load = 5'b01111;
-			load_new_note = 1'b1;
-			generate_next_sample = 1'b0;
-	    repeat(50) begin
-			#10
-			$display("Currently on note: %d, Duration: %d, Output: %d", note_to_load, duration_to_load, sample_out);
-			$display("Playing: %d, Sample Ready: %d, Note done playing: %d",play_enable, new_sample_ready, done_with_note);
-      	end
       
       	play_enable = 1'b0;
 		$display("Pausing the note.");
-		repeat(50) begin
+      	#10
+      repeat(20) begin
 		#10
 		$display("Currently on note: %d, Duration: %d, Output: %d", note_to_load, duration_to_load, sample_out);
 		  $display("Playing: %d, Sample Ready: %d, Note done playing: %d",play_enable, new_sample_ready, done_with_note);
@@ -76,10 +65,11 @@ module note_player_tb();
 	    
 	    $display("Playing the note.");
 	    play_enable = 1'b1;
-	    repeat(400) begin
+      #10
+      repeat(12000) begin
 			#10
 			$display("Currently on note: %d, Duration: %d, Output: %d", note_to_load, duration_to_load, sample_out);
-	    	$display("Sample Ready: %d, Note done playing: %d", new_sample_ready, done_with_note);
+	    	$display("Playing: %d, Sample Ready: %d, Note done playing: %d", play_enable, new_sample_ready, done_with_note);
 	    end
 		
 		$display("Note should have ended.");
