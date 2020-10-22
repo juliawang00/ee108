@@ -78,10 +78,20 @@ module mcu_tb();
         play_button = 1'b1;
         #10
         play_button = 1'b0;
-        repeat(200) begin //I don't actually know if this was enough cycles??
-            #30
+        repeat(10) begin //I don't actually know if this was enough cycles??
+            #10
             $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d, Song done: %d, Next_button: %d, play_button: %d", play, reset_player, song, song_done, next_button, play_button);
         end
+        song_done = 1'b1;
+        $display("Second song is done %d. play_button: %d, play: %d", song_done, play_button, play);
+        #10
+        song_done = 1'b0;
+        $display("Second song is done %d. play_button: %d, play: %d", song_done, play_button, play);
+        repeat(5) begin //I don't actually know if this was enough cycles??
+            #10
+            $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d, Song done: %d, Next_button: %d, play_button: %d", play, reset_player, song, song_done, next_button, play_button);
+        end
+        
         
         #20
         $display("Should have reached third song and waiting in paused. Skipping to fourth song.");
