@@ -28,7 +28,7 @@ module note_player(
     wire [5:0] counter_next;
     dffre #(6) duration(.clk(clk), .r(reset), .en(beat), .d(counter_next), .q(counter));
     
-    assign counter_next = (state == `PLAYING_NOTE && play_enable == 1'b1) ? counter_next + 1 : counter_next;
+    assign counter_next = (state == `PLAYING_NOTE && play_enable == 1'b1) ? counter_next + 1 : counter;
     
     wire [19:0] step_size;
     frequency_rom #() ROM(.clk(clk), .addr(note_to_load), .dout(step_size));
