@@ -8,9 +8,7 @@ module song_reader(
     output [5:0] note,
     output [5:0] duration,
     output new_note
-);
-    
-    
+);    
     
     // *** SONG_READER FSM ***
     `define RESET 2'b00
