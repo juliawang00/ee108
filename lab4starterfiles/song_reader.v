@@ -35,7 +35,7 @@ module song_reader(
     
     // Instantiate ROM module.
     wire [6:0] addr = {song, count};
-    reg [11:0] returned_note;
+    wire [11:0] returned_note;
     song_rom #() get_notes(.clk(clk), .addr(addr), .dout(returned_note));
     
 
