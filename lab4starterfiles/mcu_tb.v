@@ -30,13 +30,14 @@ module mcu_tb();
         song_done = 1'b0;
         
         #20
-        $display("Currently everything should be off.");
+        $display("Currently everything should be off, play: %d.", play);
         
         #20
-        $display("Play first song from the beginning.");
         play_button = 1'b1;
-        #20
+        $display("Play first song from the beginning. play_button: %d, play: %d", play_button, play);
+        #10
         play_button = 1'b0;
+        $display("Play first song from the beginning. play_button: %d, play: %d", play_button, play);
         repeat(30) begin
             #10
             $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d, Song done: %d, Next_button: %d, play_button: %d", play, reset_player, song, song_done, next_button, play_button);
@@ -45,7 +46,7 @@ module mcu_tb();
         #20
         $display("Pausing first song after 30 loops");
         play_button = 1'b1;
-        #20
+        #10
         play_button = 1'b0;
         repeat(20) begin
             #10
@@ -55,7 +56,7 @@ module mcu_tb();
         #20
         $display("Playing first song after paused for 20 loops");
         play_button = 1'b1;
-        #20
+        #10
         play_button = 1'b0;
         repeat(20) begin
             #10
@@ -65,7 +66,7 @@ module mcu_tb();
         #20
         $display("Skipping to next song, then should sit and wait paused");
         next_button = 1'b1;
-        #20
+        #10
         next_button = 1'b0;
         repeat(20) begin
             #10
@@ -75,17 +76,17 @@ module mcu_tb();
         #20
         $display("Playing second song all the way to the end");
         play_button = 1'b1;
-        #20
+        #10
         play_button = 1'b0;
         repeat(200) begin //I don't actually know if this was enough cycles??
-            #10
+            #30
             $display("Should be playing: %b,   Moving on to next song: %b,   Currently on song: %d, Song done: %d, Next_button: %d, play_button: %d", play, reset_player, song, song_done, next_button, play_button);
         end
         
         #20
         $display("Should have reached third song and waiting in paused. Skipping to fourth song.");
         next_button = 1'b1;
-        #20
+        #10
         next_button = 1'b0;
         repeat(20) begin
             #10
@@ -95,7 +96,7 @@ module mcu_tb();
         #20
         $display("Should have skipped to fourth song and waiting in paused. Skipping back to first song.");
         play_button = 1'b1;
-        #20
+        #10
         play_button = 1'b0;
         repeat(20) begin
             #10
