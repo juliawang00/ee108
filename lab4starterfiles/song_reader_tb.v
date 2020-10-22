@@ -46,21 +46,21 @@ module song_reader_tb();
         song = 2'b01;
         play = 1;
         note_done = 1;
-        repeat(10) begin
+        repeat(30) begin
             #10
             $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
         
         $display("Song paused");
         play = 0;
-        repeat(10) begin
+        repeat(30) begin
             #10
            $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
         
         $display("Start it up again");
-        play = 0;
-        repeat(10) begin
+        play = 1;
+        repeat(30) begin
             #10
             $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
@@ -70,21 +70,21 @@ module song_reader_tb();
         song = 2'b10;
         play = 1;
         note_done = 1;
-        repeat(10) begin
+        repeat(30) begin
             #10
             $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
         
         $display("Set note_done to 0.");
         note_done = 0;
-        repeat(10) begin
+        repeat(30) begin
             #10
             $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
         
         $display("Set note_done to 1.");
         note_done = 1;
-        repeat(10) begin
+        repeat(30) begin
             #10
             $display("Playing new_note %d in song %d, which is note %d duration %d. song_done: %d, play: %d, note_done: %d", new_note, song, note, duration, song_done, play, note_done);
         end
