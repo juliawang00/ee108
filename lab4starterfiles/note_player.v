@@ -25,8 +25,10 @@ module note_player(
   dffr #(3) count(.clk(clk), .r(reset), .d(next_state), .q(state));
     
     wire [5:0] counter;
-    reg [5:0] counter_next;
+    wire [5:0] counter_next;
     dffre #(6) duration(.clk(clk), .r(reset), .en(beat), .d(counter_next), .q(counter));
+    
+    assign counter_next = (state == `PLAYING_NOTE && play_enable == 1'b1) ? counter_next + 1 : counter_next;
     
     wire [19:0] step_size;
     frequency_rom #() ROM(.clk(clk), .addr(note_to_load), .dout(step_size));
@@ -41,39 +43,28 @@ module note_player(
     always @(*) begin
         case(state)
             `INITIAL_STATE: begin
-                counter_next = 6'd0;
-                note_done = 1'd0;
                 if(load_new_note == 1'd1) begin
-                    next_state = `LOOK_UP;
+                    next_state = `SINE_WAVE;
                 end else begin
                     next_state = `INITIAL_STATE;
                 end
             end
-            `LOOK_UP: begin
-                counter_next = 6'd0;
-                note_done = 1'd0;
-                next_state = `SINE_WAVE;
-            end
             `SINE_WAVE: begin
-                counter_next = 6'd0;
-                note_done = 1'd0;
                 next_state = `PLAYING_NOTE;
             end
             `PAUSED: begin
                 // if we are in pause, wait for the play enable to go again
-                note_done = 1'd0;
                 if(play_enable == 1) begin
                     next_state = `PLAYING_NOTE;
                 end
             end
             `PLAYING_NOTE: begin
                 // increment counter for duration
-                note_done = 1'd0;
                 if(play_enable == 0) begin
-                    next_state = `PLAYING_NOTE;
+                    next_state = `PAUSED;
                 end
-              else if(counter < duration_to_load) begin
-                    counter_next = reset ? 0 : counter_next + 1;
+                else if(counter >= duration_to_load) begin
+                    next_state = `NOTE_COMPLETE;
                 end
                 else begin
                     next_state = `INITIAL_STATE;
@@ -81,15 +72,17 @@ module note_player(
             end
             `NOTE_COMPLETE: begin
                 // tell all modules the current note has finished
-                next_state = `LOOK_UP;
-                note_done = 1'd1;
+                next_state = `INITIAL_STATE;
+            end
+            default: begin
+                next_state = `INITIAL_STATE;
             end
         endcase
     end
     
   	
     assign new_sample_ready = sample_ready;
-    assign done_with_note = note_done;
+    assign done_with_note = (state == `NOTE_COMPLETE) ? 1'd1 : 1'd0;
     assign sample_out = sample;
 
 endmodule
