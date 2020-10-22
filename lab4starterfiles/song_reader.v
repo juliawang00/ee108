@@ -38,12 +38,15 @@ module song_reader(
     wire [11:0] returned_note;
     song_rom #() get_notes(.clk(clk), .addr(addr), .dout(returned_note));
     
+    wire [5:0] old_note = note;
+    wire [5:0] old_duration = duration;
+    
 
     // Assign new note values if in check_done state, otherwise keep the values the same and set new_note to zero.
-    assign {new_note, note, duration} = (current_state_q == `ROM_OUT) ? {1'b1, returned_note} : {1'b0, note, duration}; 
+    assign {new_note, note, duration} = (current_state_q == `ROM_OUT) ? {1'b1, returned_note} : {1'b0, old_note, old_duration}; 
     
     // Counter for the next notes to play. Constantly increment instead of reset or note is not done.
-    assign next_count = reset ? 5'b0 : ((current_state_q == `CHECK_DONE) && note_done && play) ? count + 5'b1 : next_count;
+    assign next_count = reset ? 5'b0 : ((current_state_q == `CHECK_DONE) && note_done && play) ? count + 5'b1 : count;
     
     // Song is done when we are in check_done state and count has reached the last note.
     assign song_done = ((current_state_q == `CHECK_DONE) && note_done && count == 31) ? 1 : 0;
