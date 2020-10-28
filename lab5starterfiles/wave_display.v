@@ -13,5 +13,5 @@ module wave_display (
     output wire [7:0] b
 );
 
-// Implement me!
+    assign {r,g,b} = 24'hFFFFFF; // Make out output colors simply white for the time being.
 endmodule
