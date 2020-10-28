@@ -39,9 +39,10 @@ module wave_capture (
     ); 
     
     
+        
+    // Flip the read_index output when wave_display_idle is high. We are moving back to the armed state and need to read from the other buffer.
+    wire read_index; // ISSUE REFERRING BACK TO ITSELF
     // Read_index DFF. It inverts read_index when wave_display is high
-    wire state;
-    reg  next_state;
     dffre #(.WIDTH(2)) state_dff (
         .clk(clk),
         .r(reset),
@@ -62,12 +63,9 @@ module wave_capture (
     );
     
         
-    assign write_sample == (state == `ACTIVE) ? new_sample_in[15:8] : 8'b0; // Assign 8 MSB of new_sample, otherwise set to zero
-    assign write_address == (state == `ACTIVE) ? {read_index, count} : 8'b0;
-    
-    // Flip the read_index output when wave_display_idle is high. We are moving back to the armed state and need to read from the other buffer.
-    assign read_index = wave_display_idle ? ~read_index : read_index; // ISSUE REFERRING BACK TO ITSELF
-
+    wire[7:0] write_sample == (state == `ACTIVE) ? new_sample_in[15:8] + 8'b10000000 : 8'b0; // Assign 8 MSB of new_sample, otherwise set to zero. The addition turns shifts 2-signed integers to the positive range.
+    wire[8:0] write_address == (state == `ACTIVE) ? {~read_index, count} : 9'b0; // read_index inverted here since its value is passed to display
+    wire write_enable == ((state == `ACTIVE) && new_sample_ready) ? 1'b1 : 1'b0;
     
     always @* begin
         case (state)
