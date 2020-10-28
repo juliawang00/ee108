@@ -37,6 +37,18 @@ module wave_capture (
         .d(new_sample_in[15]), // MSB of new_sample input
         .q(prev_sample) // MSB of the last sample input
     ); 
+    
+    
+    // Read_index DFF. It inverts read_index when wave_display is high
+    wire state;
+    reg  next_state;
+    dffre #(.WIDTH(2)) state_dff (
+        .clk(clk),
+        .r(reset),
+        .en(wave_display_idle),
+        .d(read_index + 1'b1),
+        .q(read_index)
+    );
 
     
     // State DFF
