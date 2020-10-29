@@ -42,7 +42,7 @@ module wave_capture (
         
     // Flip the read_index output when wave_display_idle is high. We are moving back to the armed state and need to read from the other buffer.
     // Read_index DFF. It inverts read_index when wave_display is high
-    dffre #(.WIDTH(2)) state_dff (
+    dffre #(.WIDTH(2)) read_flip (
         .clk(clk),
         .r(reset),
         .en(wave_display_idle),
