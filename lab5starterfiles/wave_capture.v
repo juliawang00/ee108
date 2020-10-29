@@ -62,9 +62,9 @@ module wave_capture (
     );
     
     // Assigning outputs
-    assign write_sample == (state == `ACTIVE) ? new_sample_in[15:8] + 8'b10000000 : 8'b0; // Assign 8 MSB of new_sample, otherwise set to zero. The addition turns shifts 2-signed integers to the positive range.
-    assign write_address == (state == `ACTIVE) ? {~read_index, count} : 9'b0; // read_index inverted here since its value is passed to display
-    assign write_enable == ((state == `ACTIVE) && new_sample_ready); // We write in the active state when we get a new sample
+    assign write_sample = (state == `ACTIVE) ? new_sample_in[15:8] + 8'b10000000 : 8'b0; // Assign 8 MSB of new_sample, otherwise set to zero. The addition turns shifts 2-signed integers to the positive range.
+    assign write_address = (state == `ACTIVE) ? {~read_index, count} : 9'b0; // read_index inverted here since its value is passed to display
+    assign write_enable = ((state == `ACTIVE) && new_sample_ready); // We write in the active state when we get a new sample
     
     always @* begin
         case (state)
