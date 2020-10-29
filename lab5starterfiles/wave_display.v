@@ -12,6 +12,9 @@ module wave_display (
     output wire [7:0] g,
     output wire [7:0] b
 );
-
+    
+    
+    wire[6:0] read_value_adjusted = (read_value >> 1) + 6'd32; // New value for read_value to fit our small screen.
+    assign valid_pixel = ((x[9] ^ x[8] == 1) && y[9] == 0) ? 1'b1 : 1'b0; // Pixel is valid if (x is in quadrants 1 or 2) and y MSB is 0.
     assign {r,g,b} = 24'hFFFFFF; // Make out output colors simply white for the time being.
 endmodule
