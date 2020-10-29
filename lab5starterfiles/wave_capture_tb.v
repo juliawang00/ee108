@@ -86,7 +86,7 @@ module wave_capture_tb ();
         #10
         $display("Write Address: %b, Write enabled: %b, Write sample: %b, Read Index: %b, New Sample Ready: %b, Sample In: %b, Reset: %b", write_address, write_enable, write_sample, read_index, new_sample_ready, new_sample_in, reset);
       end
-      
+      $stop;
     end 
   	
 endmodule
