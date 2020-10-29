@@ -112,5 +112,7 @@ module wave_display_tb ();
         $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
       end
     end
+  
+  $stop;
 
 endmodule
