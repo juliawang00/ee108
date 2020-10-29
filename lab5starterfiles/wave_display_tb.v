@@ -37,6 +37,17 @@ module wave_display_tb ();
       read_value = 8'b0;
       read_index = 1'b1;
       
+
+      $display("Not valid");
+      x = 11'b00000001001;
+      y = 10'b0001000101;
+      valid = 1'b0;
+      repeat(5) begin
+        #10
+        $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
+      end
+      
+      valid = 1'b1;
       // First Quarter, Top Half Value
       $display("First Quarter, Top Half: Should be invalid");
       x = 11'b00000001001;
@@ -68,6 +79,7 @@ module wave_display_tb ();
       $display("Second Quarter, Top Half: Valid, value 1");
       x = 11'b00100001001;
       y = 10'b0001000101;
+      read_value = 8'b00110101;
       repeat(5) begin
         #10
         $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
@@ -76,6 +88,7 @@ module wave_display_tb ();
       $display("Second Quarter, Top Half: Valid, value 2");
       x = 11'b00100001010;
       y = 10'b0001000101;
+      read_value = 8'b00110101;
       repeat(5) begin
         #10
         $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
@@ -84,6 +97,7 @@ module wave_display_tb ();
       $display("Second Quarter, Top Half: Valid, value 3");
       x = 11'b00100001011;
       y = 10'b0001000101;
+      read_value = 8'b10110101;
       repeat(5) begin
         #10
         $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
@@ -92,6 +106,7 @@ module wave_display_tb ();
       $display("Second Quarter, Top Half: Valid, value 4");
       x = 11'b00100001100;
       y = 10'b0001000101;
+      read_value = 8'b10110101;
       repeat(5) begin
         #10
         $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
