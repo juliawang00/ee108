@@ -111,6 +111,42 @@ module wave_display_tb ();
         #10
         $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
       end
+      
+      $display("Second Quarter, Top Half: Valid, value 5");
+      x = 11'b00100001101;
+      y = 10'b0001000101;
+      read_value = 8'b10110101;
+      repeat(5) begin
+        #10
+        $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
+      end
+      
+      $display("Second Quarter, Top Half: Valid, value 6");
+      x = 11'b00100001110;
+      y = 10'b0001000101;
+      read_value = 8'b10110101;
+      repeat(5) begin
+        #10
+        $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
+      end
+      
+      $display("Second Quarter, Top Half: Valid, value 7");
+      x = 11'b00100001111;
+      y = 10'b0001000101;
+      read_value = 8'b10110101;
+      repeat(5) begin
+        #10
+        $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
+      end
+      
+      $display("Second Quarter, Top Half: Valid, value 8");
+      x = 11'b00100010000;
+      y = 10'b0001000101;
+      read_value = 8'b10110101;
+      repeat(5) begin
+        #10
+        $display("x: %b, y: %b, Read Value: %b, Read Address: %b, Valid Pixel: %b, Red: %b, Green: %b, Blue: %b", x, y, read_value, read_address, valid_pixel, r, g, b);
+      end
       $stop;
     end
  
