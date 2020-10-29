@@ -18,9 +18,9 @@ module wave_display (
     assign valid_pixel = ((x[9] ^ x[8] == 1) && y[9] == 0); // Pixel is valid if (x is in quadrants 1 or 2) and y MSB is 0.
     assign {r,g,b} = 24'hFFFFFF; // Make out output colors simply white for the time being.
     
-    wire [7:0] prev_x;
+    wire [7:0] prev_x; // holds value of previous x position on VGA display
     
-    // clock to keep track of previous value of x
+    // propagates previous value of x position on VGA display
     dffr #(.WIDTH(8)) prevX (
         .clk(clk),
         .r(reset),
@@ -28,7 +28,9 @@ module wave_display (
         .q(prev_x)
     );
     
-    wire [8:0] prev_read_val;
+    wire [8:0] prev_read_val; // holds previous RAM value read ( aka RAM[x-1] )
+    
+    // propagates previous RAM value read ( aka RAM[x-1] )
     dffre #(.WIDTH(8)) store (
         .clk(clk),
         .r(reset),
@@ -37,9 +39,10 @@ module wave_display (
         .en(prev_x && x[8:1])
     );
     
-    assign read_address = (!(prev_x && x[8:1])) ? {read_index, x[8:1]} : {read_index, 8'b0}; // assigns to all zeroes if x has not changed value
+    // assigns the read_address to all zeroes if x has not changed value, otherwise assigns it to updated value
+    assign read_address = (!(prev_x && x[8:1])) ? {read_index, x[8:1]} : {read_index, 8'b0}; 
     
-    // assign rgb values to white if the y val is between RAM[x] and RAM[x-1]
+    // assign rgb values to white if the current y val is between RAM[x] and RAM[x-1], otherwise it is black
     assign {r,g,b} = valid ? (((prev_read_val >= y[8:1]) && (y[8:1] <= read_value) || (prev_read_val <= y[8:1]) && (y[8:1] >= read_value)) ? 24'hFFFFFF : 24'b0) : 24'b0;
     
 endmodule
