@@ -29,7 +29,7 @@ module wave_display (
     );
     
     wire [8:0] prev_read_val;
-    dffre #(.WIDTH(8)) prevX (
+    dffre #(.WIDTH(8)) store (
         .clk(clk),
         .r(reset),
         .d(read_address),
