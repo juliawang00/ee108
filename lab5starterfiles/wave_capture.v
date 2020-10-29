@@ -69,7 +69,7 @@ module wave_capture (
     always @* begin
         case (state)
             // Change state on zero crossing. Do not allow on reset, since this interrupts the flow, and we need two consecutive samples for evaluation.
-            `ARMED:  next_state = (prev_sample == 1 && new_sample_in[15] == 0 && !reset) ? `ACTIVE : state; 
+            `ARMED:  next_state = (prev_sample == 1'b1 && new_sample_in[15] == 1'b0 && !reset) ? `ACTIVE : state; 
             
             // Next is set to 0 in the active state when reset is pressed or 256 audio samples have been input (255 + 1 = 0)
             `ACTIVE:   next_state = (next == 9'b0) ? `WAIT : state; 
