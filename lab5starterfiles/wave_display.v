@@ -31,7 +31,7 @@ module wave_display (
     wire [8:0] prev_read_val; // holds previous RAM value read ( aka RAM[x-1] )
     
     // propagates previous RAM value read ( aka RAM[x-1] )
-    dffre #(.WIDTH(8)) store (
+    dffre #(.WIDTH(9)) store (
         .clk(clk),
         .r(reset),
         .d(read_address),
