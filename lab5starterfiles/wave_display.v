@@ -28,14 +28,15 @@ module wave_display (
     );
     
     wire [8:0] prev_read_val; // holds previous RAM value read ( aka RAM[x-1] )
+  
     
     // propagates previous RAM value read ( aka RAM[x-1] )
-    dffre #(.WIDTH(9)) store (
+  dffre #(.WIDTH(9)) store (
         .clk(clk),
         .r(reset),
         .d(read_address),
         .q(prev_read_val),
-        .en(prev_x && x[8:1])
+    .en(!(prev_x && x[8:1] == 8'b11111111))
     );
     
     // assigns the read_address to all zeroes if x has not changed value, otherwise assigns it to updated value
