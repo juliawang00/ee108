@@ -32,9 +32,9 @@ module wave_display_top(
     
     
      // Instantiate the wave_display module
-    wire [8:0] read_address,
-    wire [7:0] read_value,
-    wire valid_pixel,
+    wire [8:0] read_address;
+    wire [7:0] read_value;
+    wire valid_pixel;
     
     wave_display #() w_d ( //FILL IN THE #() PARAM
         .clk(clk),
