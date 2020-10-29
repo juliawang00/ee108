@@ -18,13 +18,27 @@ module wave_display (
     assign valid_pixel = ((x[9] ^ x[8] == 1) && y[9] == 0); // Pixel is valid if (x is in quadrants 1 or 2) and y MSB is 0.
     assign {r,g,b} = 24'hFFFFFF; // Make out output colors simply white for the time being.
     
-    wire [10:0] prev_x;
+    wire [7:0] prev_x;
     
-    dffr #(.WIDTH(1)) prevX (
+    // clock to keep track of previous value of x
+    dffr #(.WIDTH(8)) prevX (
         .clk(clk),
         .r(reset),
-        .d(x),
+        .d(x[8:1]),
         .q(prev_x)
     );
+    
+    wire [8:0] prev_read_val;
+    dffre #(.WIDTH(8)) prevX (
+        .clk(clk),
+        .r(reset),
+        .d(read_address),
+        .q(prev_read_val),
+        .en(prev_x && x[8:1])
+    );
+    
+    assign read_address = (!(prev_x && x[8:1])) ? {read_index, x[8:1]} : {read_index, 8'b0}; // assigns to all zeroes if x has not changed value
+    
+    assign {r,g,b} = valid ? (((prev_read_val >= y[8:1]) && (y[8:1] <= read_value) || (prev_read_val <= y[8:1]) && (y[8:1] >= read_value)) ? 24'hFFFFFF : 24'b0) : 24'b0;
     
 endmodule
