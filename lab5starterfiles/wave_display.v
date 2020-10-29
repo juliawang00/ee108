@@ -39,6 +39,7 @@ module wave_display (
     
     assign read_address = (!(prev_x && x[8:1])) ? {read_index, x[8:1]} : {read_index, 8'b0}; // assigns to all zeroes if x has not changed value
     
+    // assign rgb values to white if the y val is between RAM[x] and RAM[x-1]
     assign {r,g,b} = valid ? (((prev_read_val >= y[8:1]) && (y[8:1] <= read_value) || (prev_read_val <= y[8:1]) && (y[8:1] >= read_value)) ? 24'hFFFFFF : 24'b0) : 24'b0;
     
 endmodule
