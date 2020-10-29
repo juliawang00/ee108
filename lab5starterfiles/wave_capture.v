@@ -42,7 +42,7 @@ module wave_capture (
         
     // Flip the read_index output when wave_display_idle is high. We are moving back to the armed state and need to read from the other buffer.
     // Read_index DFF. It inverts read_index when wave_display is high
-    dffre #(.WIDTH(2)) read_flip (
+    dffre #(.WIDTH(1)) read_flip (
         .clk(clk),
         .r(reset),
         .en(wave_display_idle),
@@ -52,8 +52,8 @@ module wave_capture (
 
     
     // State DFF
-    wire state;
-    reg  next_state;
+    wire[1:0] state;
+    reg[1:0]  next_state;
     dffr #(.WIDTH(2)) state_dff (
         .clk(clk),
         .r(reset),
@@ -69,7 +69,7 @@ module wave_capture (
     always @* begin
         case (state)
             // Change state on zero crossing. Do not allow on reset, since this interrupts the flow, and we need two consecutive samples for evaluation.
-            `ARMED:  next_state = (prev_sample == 1 && new_sample_in[15] && !reset) ? `ACTIVE : state; 
+            `ARMED:  next_state = (prev_sample == 1 && new_sample_in[15] == 0 && !reset) ? `ACTIVE : state; 
             
             // Next is set to 0 in the active state when reset is pressed or 256 audio samples have been input (255 + 1 = 0)
             `ACTIVE:   next_state = (next == 9'b0) ? `WAIT : state; 
