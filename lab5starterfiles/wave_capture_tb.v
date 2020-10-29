@@ -41,8 +41,10 @@ module wave_capture_tb ();
     end
   
   	initial begin
-      #100
+      //Sample changing from high to low
+      #10
       new_sample_in = 16'b1000000100000000;	
+      $display("Write Address: %b, Write enabled: %b, Write sample: %b, Read Index: %b, New Sample Ready: %b, Sample In: %b, Reset: %b", write_address, write_enable, write_sample, read_index, new_sample_ready, new_sample_in, reset);
       #10
       new_sample_in = 16'b0000000100000000;
       wave_display_idle = 1'b0;
@@ -50,7 +52,41 @@ module wave_capture_tb ();
       repeat(256) begin
         #10
         $display("Write Address: %b, Write enabled: %b, Write sample: %b, Read Index: %b, New Sample Ready: %b, Sample In: %b, Reset: %b", write_address, write_enable, write_sample, read_index, new_sample_ready, new_sample_in, reset);
+      end
+      
+      //Expect nothing to change
+      wave_display_idle = 1'b1;
+            repeat(256) begin
+        #10
+        $display("Write Address: %b, Write enabled: %b, Write sample: %b, Read Index: %b, New Sample Ready: %b, Sample In: %b, Reset: %b", write_address, write_enable, write_sample, read_index, new_sample_ready, new_sample_in, reset);
       end	
+      
+      //Nothing should happen not changing from positive to negative
+       #10
+      new_sample_in = 16'b1000000100000000;
+      
+      #10
+      new_sample_in = 16'b10011100100000000;
+      wave_display_idle = 1'b0;
+      
+      repeat(256) begin
+        #10
+        $display("Write Address: %b, Write enabled: %b, Write sample: %b, Read Index: %b, New Sample Ready: %b, Sample In: %b, Reset: %b", write_address, write_enable, write_sample, read_index, new_sample_ready, new_sample_in, reset);
+      end
+      
+       //Another final regular check 
+       #10
+      new_sample_in = 16'b1000000100000000;
+      
+      #10
+      new_sample_in = 16'b00011100100000000;
+      wave_display_idle = 1'b0;
+      
+      repeat(256) begin
+        #10
+        $display("Write Address: %b, Write enabled: %b, Write sample: %b, Read Index: %b, New Sample Ready: %b, Sample In: %b, Reset: %b", write_address, write_enable, write_sample, read_index, new_sample_ready, new_sample_in, reset);
+      end
+      
     end 
   	
 endmodule
