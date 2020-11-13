@@ -7,11 +7,11 @@ module arbiter(
     );
     
     always @ (*) begin
-      if bit_i[2]
+        if (bit_i[2])
           bit_o = 3'b100;
-      else if bit_i[1]
+        else if (bit_i[1])
           bit_o = 3'b010;
-      else if bit_i[0] 
+        else if (bit_i[0]) 
           bit_o = 3'b001;
       else
           bit_o = 3'b000;
