@@ -11,11 +11,7 @@
 `define PAUSED             3'b000
 `define WAIT               3'b001
 `define INCREMENT_ADDRESS  3'b010
-`define RETRIEVE_NOTE1     3'b011
-`define RETRIEVE_NOTE2     3'b100
-`define RETRIEVE_NOTE3     3'b101
-`define RETRIEVE_WAIT      3'b110
-`define NEW_NOTE_READY     3'b111
+`define RETRIEVE_NOTE      3'b110
 
 
 module song_reader(
@@ -23,19 +19,10 @@ module song_reader(
     input reset,
     input play,
     input [1:0] song,
-    input note_done1,
-    input note_done2,
-    input note_done3,
+    input note_done1, note_done2, note_done3,
     output wire song_done,
-    output wire [5:0] note1,
-    output wire [5:0] duration1,
-    output wire [5:0] note2,
-    output wire [5:0] duration2,
-    output wire [5:0] note3,
-    output wire [5:0] duration3,
-    output wire new_note1,
-    output wire new_note2,
-    output wire new_note3
+    output wire [5:0] note1,duration1, note2,duration2, note3,duration3,
+    output wire new_note1, new_note2, new_note3
 );
     wire [`SONG_WIDTH-1:0] curr_note_num, next_note_num;    // Counter for addresses of a song. Up to 128.
     wire [`MSB + `NOTE_WIDTH + `DURATION_WIDTH + `OPTIONS -1:0] note_and_duration; // 16 bits. Value read from the rom and as specified in lab directions. MSB specifies if reading a note or wait period.
@@ -81,13 +68,10 @@ module song_reader(
 
     always @(*) begin
         case (state)
-            `PAUSED:            next = play ? `RETRIEVE_NOTE1 : `PAUSED;
+            `PAUSED:            next = play ? `RETRIEVE_NOTE : `PAUSED;
             // HAVE ONLY ONE RETRIEVE STATE THAT GOES TO WAIT WHEN ARBITER OUTPUTS 0
             `RETRIEVE_NOTE:    next = !play ? `PAUSED : note_and_duration[15] ? `WAIT : `RETRIEVE_NOTE;
-//             `RETRIEVE_NOTE2:    next = !play ? `PAUSED : note_and_duration[15] ? `WAIT : `RETRIEVE_NOTE3;
-//             `RETRIEVE_NOTE3:    next = !play ? `PAUSED : note_and_duration[15] ? `WAIT : `RETRIEVE_WAIT;
-//             `RETRIEVE_WAIT:     next = play ? `NEW_NOTE_READY : `PAUSED;
-//             `NEW_NOTE_READY:    next = play ? `WAIT: `PAUSED;
+          
             `WAIT:              next = !play ? `PAUSED
                                             : (done_wait ? `INCREMENT_ADDRESS
                                                           : `WAIT);
@@ -101,7 +85,7 @@ module song_reader(
     assign {overflow, next_note_num} =
         ((state == `INCREMENT_ADDRESS) || ((state == `RETRIEVE_NOTE) && ~note_and_duration[15])) ? {1'b0, curr_note_num} + 1 : {1'b0, curr_note_num};
 
-    open_player arbiter(.bit_i(notes_done), .bit_o(player_available));
+    arbiter open_player(.bit_i(notes_done), .bit_o(player_available));
     assign {new_note1, note1, duration1} = ((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b100) ? {1'b1, note_and_duration[14:3]} : {13'b0};
     assign {new_note2, note2, duration2} = ((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b010) ? {1'b1, note_and_duration[14:3]} : {13'b0};
     assign {new_note3, note3, duration3} = ((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b001) ? {1'b1, note_and_duration[14:3]} : {13'b0};
@@ -109,7 +93,6 @@ module song_reader(
     assign song_done = overflow;
 
 endmodule
-
 // OLD CODE:
 
 
