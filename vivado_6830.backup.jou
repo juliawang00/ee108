@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.3 (64-bit)
+# SW Build 2644227 on Wed Sep  4 09:44:18 MDT 2019
+# IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
+# Start of session at: Wed Oct 28 19:05:56 2020
+# Process ID: 6830
+# Current directory: /home/users/tabarca/ee108/ee108git/ee108
+# Command line: vivado
+# Log file: /home/users/tabarca/ee108/ee108git/ee108/vivado.log
+# Journal file: /home/users/tabarca/ee108/ee108git/ee108/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project lab5 /home/users/tabarca/ee108/lab5 -part xc7z020clg400-1
+set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
+add_files -norecurse {/home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/i2s_data_interface.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/ram_1w2r.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/debouncer.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/fake_sample_ram.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/i3c2.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/music_player.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/adau1761_codec.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/lab5_top.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/adau1761_configuraiton_data.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/note_player.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/sine_rom.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/song_reader.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/wave_display_top.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/tcgrom.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/wave_display.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/ff_lib.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/mcu.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/codec_conditioner.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/frequency_rom.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/sine_reader.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/beat_generator.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/brute_force_synchronizer.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/button_press_unit.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/song_rom.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/clocking.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/video_package_800x480.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/adau1761_izedboard.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/wave_capture.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/i2c.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/ADAU1761_interface.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/vga_controller_800x480_60.vhd /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/one_pulse.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse {/home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/wave_display_tb.v /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/wave_capture_tb.v}
+update_compile_order -fileset sim_1
+add_files -fileset constrs_1 -norecurse /home/users/tabarca/ee108/ee108git/ee108/lab5starterfiles/lab5.xdc
+set_property  ip_repo_paths  /home/users/tabarca/ee108/ee108git/ee108/hdmi_tx_ip [current_project]
+update_ip_catalog
+create_ip -name hdmi_tx -vendor realdigital.org -library realdigital -version 1.1 -module_name hdmi_tx_0
+generate_target {instantiation_template} [get_files /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/hdmi_tx_0/hdmi_tx_0.xci]
+generate_target all [get_files  /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/hdmi_tx_0/hdmi_tx_0.xci]
+catch { config_ip_cache -export [get_ips -all hdmi_tx_0] }
+export_ip_user_files -of_objects [get_files /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/hdmi_tx_0/hdmi_tx_0.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/hdmi_tx_0/hdmi_tx_0.xci]
+launch_runs -jobs 8 hdmi_tx_0_synth_1
+export_simulation -of_objects [get_files /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/hdmi_tx_0/hdmi_tx_0.xci] -directory /home/users/tabarca/ee108/lab5/lab5.ip_user_files/sim_scripts -ip_user_files_dir /home/users/tabarca/ee108/lab5/lab5.ip_user_files -ipstatic_source_dir /home/users/tabarca/ee108/lab5/lab5.ip_user_files/ipstatic -lib_map_path [list {modelsim=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/modelsim} {questa=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/questa} {ies=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/ies} {xcelium=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/xcelium} {vcs=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/vcs} {riviera=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+create_ip -name clk_wiz -vendor xilinx.com -library ip -version 6.0 -module_name clk_wiz_0
+set_property -dict [list CONFIG.CLK_IN1_BOARD_INTERFACE {sys_clock} CONFIG.CLKOUT2_USED {true} CONFIG.CLKOUT3_USED {true} CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {25.000} CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {125.000} CONFIG.PRIM_IN_FREQ {125.000} CONFIG.CLKIN1_JITTER_PS {80.0} CONFIG.MMCM_CLKFBOUT_MULT_F {8.000} CONFIG.MMCM_CLKIN1_PERIOD {8.000} CONFIG.MMCM_CLKOUT1_DIVIDE {40} CONFIG.MMCM_CLKOUT2_DIVIDE {8} CONFIG.NUM_OUT_CLKS {3} CONFIG.CLKOUT1_JITTER {124.615} CONFIG.CLKOUT1_PHASE_ERROR {96.948} CONFIG.CLKOUT2_JITTER {165.419} CONFIG.CLKOUT2_PHASE_ERROR {96.948} CONFIG.CLKOUT3_JITTER {119.348} CONFIG.CLKOUT3_PHASE_ERROR {96.948}] [get_ips clk_wiz_0]
+generate_target {instantiation_template} [get_files /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+update_compile_order -fileset sources_1
+generate_target all [get_files  /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+catch { config_ip_cache -export [get_ips -all clk_wiz_0] }
+export_ip_user_files -of_objects [get_files /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+launch_runs -jobs 8 clk_wiz_0_synth_1
+export_simulation -of_objects [get_files /home/users/tabarca/ee108/lab5/lab5.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci] -directory /home/users/tabarca/ee108/lab5/lab5.ip_user_files/sim_scripts -ip_user_files_dir /home/users/tabarca/ee108/lab5/lab5.ip_user_files -ipstatic_source_dir /home/users/tabarca/ee108/lab5/lab5.ip_user_files/ipstatic -lib_map_path [list {modelsim=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/modelsim} {questa=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/questa} {ies=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/ies} {xcelium=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/xcelium} {vcs=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/vcs} {riviera=/home/users/tabarca/ee108/lab5/lab5.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet

@@ -1,0 +1,636 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.3 (64-bit)
+# SW Build 2644227 on Wed Sep  4 09:44:18 MDT 2019
+# IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
+# Start of session at: Wed Oct 21 22:21:32 2020
+# Process ID: 23444
+# Current directory: /home/users/tabarca/ee108/ee108git/ee108
+# Command line: vivado
+# Log file: /home/users/tabarca/ee108/ee108git/ee108/vivado.log
+# Journal file: /home/users/tabarca/ee108/ee108git/ee108/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/users/tabarca/ee108/lab4/lab4.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/users/tabarca/ee108/108labs/hdmi_tx_ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:34 ; elapsed = 00:00:26 . Memory (MB): peak = 6668.805 ; gain = 164.777 ; free physical = 65960 ; free virtual = 89292
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'music_player_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj music_player_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ac97_if.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ac97_if
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/beat_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module beat_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/codec_conditioner.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module codec_conditioner
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ff_lib.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dff
+INFO: [VRFC 10-311] analyzing module dffr
+INFO: [VRFC 10-311] analyzing module dffre
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/frequency_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module frequency_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mcu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module music_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/note_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module note_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_reader
+WARNING: [VRFC 10-3507] macro 'INITIAL_STATE' redefined [/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v:14]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/song_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module song_reader
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/song_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module song_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module music_player_tb
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot music_player_tb_behav xil_defaultlib.music_player_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /cad/xilinx/vivado/2019.1/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot music_player_tb_behav xil_defaultlib.music_player_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.dffr(WIDTH=2)
+Compiling module xil_defaultlib.dffr
+Compiling module xil_defaultlib.mcu
+Compiling module xil_defaultlib.dffr(WIDTH=5)
+Compiling module xil_defaultlib.song_rom
+Compiling module xil_defaultlib.song_reader
+Compiling module xil_defaultlib.dffr(WIDTH=3)
+Compiling module xil_defaultlib.dffre(WIDTH=6)
+Compiling module xil_defaultlib.frequency_rom
+Compiling module xil_defaultlib.dffre(WIDTH=22)
+Compiling module xil_defaultlib.sine_rom
+Compiling module xil_defaultlib.dffr(WIDTH=6)
+Compiling module xil_defaultlib.sine_reader
+Compiling module xil_defaultlib.note_player
+Compiling module xil_defaultlib.dffre(WIDTH=10)
+Compiling module xil_defaultlib.beat_generator(STOP=500)
+Compiling module xil_defaultlib.dffre
+Compiling module xil_defaultlib.dffre(WIDTH=16)
+Compiling module xil_defaultlib.codec_conditioner
+Compiling module xil_defaultlib.music_player(BEAT_COUNT=500)
+Compiling module xil_defaultlib.dffr(WIDTH=8)
+Compiling module xil_defaultlib.dffre(WIDTH=32)
+Compiling module xil_defaultlib.ac97_if
+Compiling module xil_defaultlib.music_player_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot music_player_tb_behav
+run_program: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 6754.797 ; gain = 0.000 ; free physical = 65994 ; free virtual = 89327
+INFO: [USF-XSim-69] 'elaborate' step finished in '6' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "music_player_tb_behav -key {Behavioral:sim_1:Functional:music_player_tb} -tclbatch {music_player_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source music_player_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:09 ; elapsed = 00:00:18 . Memory (MB): peak = 6927.637 ; gain = 130.062 ; free physical = 66024 ; free virtual = 89294
+# run all
+Audio out: sound file audio.snd opened for output.
+Starting playing song 0...
+[15359845000] Audio out: generated 1 seconds.
+Pause...
+Resume playing song 0...
+[30719845000] Audio out: generated 2 seconds.
+Next song...
+[46079845000] Audio out: generated 3 seconds.
+Starting playing song 1...
+[61439845000] Audio out: generated 4 seconds.
+$finish called at time : 67500380 ns : File "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player_tb.v" Line 118
+run: Time (s): cpu = 00:00:27 ; elapsed = 00:00:35 . Memory (MB): peak = 6927.637 ; gain = 0.000 ; free physical = 65821 ; free virtual = 89294
+xsim: Time (s): cpu = 00:00:42 ; elapsed = 00:01:04 . Memory (MB): peak = 6927.637 ; gain = 163.883 ; free physical = 65817 ; free virtual = 89290
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'music_player_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for -all
+launch_simulation: Time (s): cpu = 00:00:59 ; elapsed = 00:01:18 . Memory (MB): peak = 6927.637 ; gain = 172.840 ; free physical = 65817 ; free virtual = 89290
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/users/tabarca/ee108/lab4/lab4.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Wed Oct 21 22:28:20 2020] Launched synth_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Wed Oct 21 22:31:12 2020] Launched impl_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Wed Oct 21 22:43:23 2020] Launched impl_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 6927.637 ; gain = 0.000 ; free physical = 65759 ; free virtual = 89252
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:33 ; elapsed = 00:00:06 . Memory (MB): peak = 6927.637 ; gain = 0.000 ; free physical = 65896 ; free virtual = 89292
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'music_player_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj music_player_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ac97_if.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ac97_if
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/beat_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module beat_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/codec_conditioner.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module codec_conditioner
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ff_lib.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dff
+INFO: [VRFC 10-311] analyzing module dffr
+INFO: [VRFC 10-311] analyzing module dffre
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/frequency_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module frequency_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mcu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module music_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/note_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module note_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_reader
+WARNING: [VRFC 10-3507] macro 'INITIAL_STATE' redefined [/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v:14]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/song_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module song_reader
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/song_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module song_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module music_player_tb
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot music_player_tb_behav xil_defaultlib.music_player_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /cad/xilinx/vivado/2019.1/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot music_player_tb_behav xil_defaultlib.music_player_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.dffr(WIDTH=2)
+Compiling module xil_defaultlib.dffr
+Compiling module xil_defaultlib.mcu
+Compiling module xil_defaultlib.dffr(WIDTH=5)
+Compiling module xil_defaultlib.song_rom
+Compiling module xil_defaultlib.song_reader
+Compiling module xil_defaultlib.dffr(WIDTH=3)
+Compiling module xil_defaultlib.dffre(WIDTH=6)
+Compiling module xil_defaultlib.frequency_rom
+Compiling module xil_defaultlib.dffre(WIDTH=22)
+Compiling module xil_defaultlib.sine_rom
+Compiling module xil_defaultlib.dffr(WIDTH=6)
+Compiling module xil_defaultlib.sine_reader
+Compiling module xil_defaultlib.note_player
+Compiling module xil_defaultlib.dffre(WIDTH=10)
+Compiling module xil_defaultlib.beat_generator(STOP=500)
+Compiling module xil_defaultlib.dffre
+Compiling module xil_defaultlib.dffre(WIDTH=16)
+Compiling module xil_defaultlib.codec_conditioner
+Compiling module xil_defaultlib.music_player(BEAT_COUNT=500)
+Compiling module xil_defaultlib.dffr(WIDTH=8)
+Compiling module xil_defaultlib.dffre(WIDTH=32)
+Compiling module xil_defaultlib.ac97_if
+Compiling module xil_defaultlib.music_player_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot music_player_tb_behav
+run_program: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 6927.637 ; gain = 0.000 ; free physical = 65891 ; free virtual = 89287
+INFO: [USF-XSim-69] 'elaborate' step finished in '6' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "music_player_tb_behav -key {Behavioral:sim_1:Functional:music_player_tb} -tclbatch {music_player_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source music_player_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:04 ; elapsed = 00:00:17 . Memory (MB): peak = 6958.648 ; gain = 31.012 ; free physical = 65949 ; free virtual = 89282
+# run all
+Audio out: sound file audio.snd opened for output.
+FATAL_ERROR: Iteration limit 10000 is reached. Possible zero delay oscillation detected where simulation time can not advance. Please check your source code. Note that the iteration limit can be changed using switch -maxdeltaid.
+Time: 55 ns  Iteration: 10000
+xsim: Time (s): cpu = 00:00:09 ; elapsed = 00:00:30 . Memory (MB): peak = 6958.648 ; gain = 31.012 ; free physical = 65950 ; free virtual = 89283
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'music_player_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for -all
+launch_simulation: Time (s): cpu = 00:00:17 ; elapsed = 00:00:42 . Memory (MB): peak = 6958.648 ; gain = 31.012 ; free physical = 65950 ; free virtual = 89283
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:04 ; elapsed = 00:00:14 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65932 ; free virtual = 89273
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'music_player_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj music_player_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ac97_if.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ac97_if
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/beat_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module beat_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/codec_conditioner.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module codec_conditioner
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ff_lib.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dff
+INFO: [VRFC 10-311] analyzing module dffr
+INFO: [VRFC 10-311] analyzing module dffre
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/frequency_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module frequency_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mcu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module music_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/note_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module note_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_reader
+WARNING: [VRFC 10-3507] macro 'INITIAL_STATE' redefined [/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v:14]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/song_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module song_reader
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/song_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module song_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/music_player_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module music_player_tb
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot music_player_tb_behav xil_defaultlib.music_player_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /cad/xilinx/vivado/2019.1/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot music_player_tb_behav xil_defaultlib.music_player_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.dffr(WIDTH=2)
+Compiling module xil_defaultlib.dffr
+Compiling module xil_defaultlib.mcu
+Compiling module xil_defaultlib.dffr(WIDTH=5)
+Compiling module xil_defaultlib.song_rom
+Compiling module xil_defaultlib.song_reader
+Compiling module xil_defaultlib.dffr(WIDTH=3)
+Compiling module xil_defaultlib.dffre(WIDTH=6)
+Compiling module xil_defaultlib.frequency_rom
+Compiling module xil_defaultlib.dffre(WIDTH=22)
+Compiling module xil_defaultlib.sine_rom
+Compiling module xil_defaultlib.dffr(WIDTH=6)
+Compiling module xil_defaultlib.sine_reader
+Compiling module xil_defaultlib.note_player
+Compiling module xil_defaultlib.dffre(WIDTH=10)
+Compiling module xil_defaultlib.beat_generator(STOP=500)
+Compiling module xil_defaultlib.dffre
+Compiling module xil_defaultlib.dffre(WIDTH=16)
+Compiling module xil_defaultlib.codec_conditioner
+Compiling module xil_defaultlib.music_player(BEAT_COUNT=500)
+Compiling module xil_defaultlib.dffr(WIDTH=8)
+Compiling module xil_defaultlib.dffre(WIDTH=32)
+Compiling module xil_defaultlib.ac97_if
+Compiling module xil_defaultlib.music_player_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot music_player_tb_behav
+run_program: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65930 ; free virtual = 89271
+INFO: [USF-XSim-69] 'elaborate' step finished in '6' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "music_player_tb_behav -key {Behavioral:sim_1:Functional:music_player_tb} -tclbatch {music_player_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source music_player_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:03 ; elapsed = 00:00:13 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65936 ; free virtual = 89278
+# run all
+Audio out: sound file audio.snd opened for output.
+FATAL_ERROR: Iteration limit 10000 is reached. Possible zero delay oscillation detected where simulation time can not advance. Please check your source code. Note that the iteration limit can be changed using switch -maxdeltaid.
+Time: 55 ns  Iteration: 10000
+xsim: Time (s): cpu = 00:00:07 ; elapsed = 00:00:26 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65940 ; free virtual = 89282
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'music_player_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for -all
+launch_simulation: Time (s): cpu = 00:00:15 ; elapsed = 00:00:39 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65940 ; free virtual = 89282
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/users/tabarca/ee108/lab4/lab4.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Wed Oct 21 22:58:07 2020] Launched synth_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Wed Oct 21 23:00:56 2020] Launched impl_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Wed Oct 21 23:15:17 2020] Launched impl_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:00.40 ; elapsed = 00:00:09 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65978 ; free virtual = 89253
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/users/tabarca/ee108/lab4/lab4.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Wed Oct 21 23:21:05 2020] Launched synth_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/synth_1/runme.log
+launch_runs: Time (s): cpu = 00:00:00.51 ; elapsed = 00:00:06 . Memory (MB): peak = 6958.648 ; gain = 0.000 ; free physical = 65625 ; free virtual = 88903
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7z020clg400-1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Netlist 29-17] Analyzing 30 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2019.1.3
+open_run: Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 7019.957 ; gain = 61.309 ; free physical = 65701 ; free virtual = 88988
+INFO: [Common 17-344] 'open_run' was cancelled
+launch_runs impl_1 -jobs 8
+[Wed Oct 21 23:24:04 2020] Launched impl_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Wed Oct 21 23:31:26 2020] Launched impl_1...
+Run output will be captured here: /home/users/tabarca/ee108/lab4/lab4.runs/impl_1/runme.log
+set_property top mcu_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'mcu_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj mcu_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mcu_tb
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot mcu_tb_behav xil_defaultlib.mcu_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /cad/xilinx/vivado/2019.1/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot mcu_tb_behav xil_defaultlib.mcu_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.dffr(WIDTH=2)
+Compiling module xil_defaultlib.dffr
+Compiling module xil_defaultlib.mcu
+Compiling module xil_defaultlib.mcu_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot mcu_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "mcu_tb_behav -key {Behavioral:sim_1:Functional:mcu_tb} -tclbatch {mcu_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source mcu_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 7217.867 ; gain = 128.062 ; free physical = 65569 ; free virtual = 88929
+# run all
+Currently everything should be off, play: 1.
+Play first song from the beginning. play_button: 1, play: 1
+Play first song from the beginning. play_button: 0, play: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Pausing first song after 30 loops
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Playing first song after paused for 20 loops
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0, Song done: 0, Next_button: 0, play_button: 0
+Skipping to next song, then should sit and wait paused
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Playing second song all the way to the end
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 1, Song done: 0, Next_button: 0, play_button: 0
+Second song is done 1. play_button: 0, play: 1
+Second song is done 0. play_button: 0, play: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 2, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 2, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 2, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 2, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 2, Song done: 0, Next_button: 0, play_button: 0
+Should have reached third song and waiting in paused. Skipping to fourth song.
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should have skipped to fourth song and waiting in paused. Skipping back to first song.
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 3, Song done: 0, Next_button: 0, play_button: 0
+$stop called at time : 1690 ns : File "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu_tb.v" Line 116
+xsim: Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 7217.867 ; gain = 187.887 ; free physical = 65573 ; free virtual = 88933
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'mcu_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for -all
+launch_simulation: Time (s): cpu = 00:00:11 ; elapsed = 00:00:24 . Memory (MB): peak = 7217.867 ; gain = 187.887 ; free physical = 65572 ; free virtual = 88933

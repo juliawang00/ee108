@@ -1,0 +1,1744 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.3 (64-bit)
+# SW Build 2644227 on Wed Sep  4 09:44:18 MDT 2019
+# IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
+# Start of session at: Wed Oct 21 19:13:21 2020
+# Process ID: 11055
+# Current directory: /home/users/tabarca/ee108/ee108git/ee108
+# Command line: vivado
+# Log file: /home/users/tabarca/ee108/ee108git/ee108/vivado.log
+# Journal file: /home/users/tabarca/ee108/ee108git/ee108/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/users/tabarca/ee108/lab4/lab4.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/users/tabarca/ee108/108labs/hdmi_tx_ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:32 ; elapsed = 00:00:25 . Memory (MB): peak = 6678.707 ; gain = 187.254 ; free physical = 64358 ; free virtual = 87867
+update_compile_order -fileset sources_1
+set_property top note_player_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'note_player_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj note_player_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/beat_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module beat_generator
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ff_lib.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dff
+INFO: [VRFC 10-311] analyzing module dffr
+INFO: [VRFC 10-311] analyzing module dffre
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/frequency_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module frequency_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/note_player.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module note_player
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_reader
+WARNING: [VRFC 10-3507] macro 'INITIAL_STATE' redefined [/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_reader.v:14]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/sine_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sine_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/note_player_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module note_player_tb
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot note_player_tb_behav xil_defaultlib.note_player_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /cad/xilinx/vivado/2019.1/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot note_player_tb_behav xil_defaultlib.note_player_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.dffr(WIDTH=3)
+Compiling module xil_defaultlib.dffre(WIDTH=6)
+Compiling module xil_defaultlib.frequency_rom
+Compiling module xil_defaultlib.dffre(WIDTH=22)
+Compiling module xil_defaultlib.sine_rom
+Compiling module xil_defaultlib.dffr(WIDTH=6)
+Compiling module xil_defaultlib.sine_reader
+Compiling module xil_defaultlib.note_player
+Compiling module xil_defaultlib.dffre(WIDTH=17)
+Compiling module xil_defaultlib.beat_generator(WIDTH=17,STOP=150...
+Compiling module xil_defaultlib.note_player_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot note_player_tb_behav
+
+****** Webtalk v2019.1.3 (64-bit)
+  **** SW Build 2644227 on Wed Sep  4 09:44:18 MDT 2019
+  **** IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/xsim.dir/note_player_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/xsim.dir/note_player_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Wed Oct 21 19:17:30 2020. For additional details about this file, please refer to the WebTalk help file at /cad/xilinx/vivado/2019.1/Vivado/2019.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Wed Oct 21 19:17:30 2020...
+run_program: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 6729.746 ; gain = 0.000 ; free physical = 64366 ; free virtual = 87895
+INFO: [USF-XSim-69] 'elaborate' step finished in '10' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "note_player_tb_behav -key {Behavioral:sim_1:Functional:note_player_tb} -tclbatch {note_player_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source note_player_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 6917.609 ; gain = 132.055 ; free physical = 64323 ; free virtual = 87852
+# run all
+Currently on note:  5, Duration: 15, Output:     0
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:     0
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:     0
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:   553
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:   553
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:   553
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:   553
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:   553
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1156
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1156
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1156
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1156
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1156
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1758
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1758
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1758
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1758
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  1758
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2360
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2360
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2360
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2360
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2360
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2962
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2962
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2962
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2962
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  2962
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  3512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  3512
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  3512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  3512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  3512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4111
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4111
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4111
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4111
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4111
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4708
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  4708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5305
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5305
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5305
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5305
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5305
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5899
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5899
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5899
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5899
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  5899
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  6491
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  6491
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  6491
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  6491
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  6491
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7032
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7032
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7032
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7032
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7032
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7620
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7620
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7620
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7620
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  7620
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8205
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8205
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8205
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8205
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8205
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8788
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8788
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8788
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8788
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  8788
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9367
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9367
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9367
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9367
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9367
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9896
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9896
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9896
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9896
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output:  9896
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 10469
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 10469
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 10469
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 10469
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 10469
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11039
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11039
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11039
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11039
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11039
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11605
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 11605
+Sample Ready: 1, Note done playing: 0
+Play the note.
+Currently on note:  5, Duration: 15, Output: 11605
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12167
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12167
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12167
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12167
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12167
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12725
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12725
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12725
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12725
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 12725
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13233
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13233
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13233
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13233
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13233
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13782
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13782
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13782
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13782
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 13782
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14327
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14327
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14327
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14327
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14327
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14867
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14867
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14867
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14867
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 14867
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15402
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15402
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15402
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15402
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15402
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15888
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15888
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15888
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15888
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 15888
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16413
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16413
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16413
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16413
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16413
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16932
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16932
+Playing: 1, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16932
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 16932
+Playing: 1, Sample Ready: 0, Note done playing: 0
+Pausing the note.
+Currently on note:  5, Duration: 15, Output: 16932
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17445
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17445
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17445
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17445
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17445
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17953
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17953
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17953
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17953
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 17953
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18454
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18454
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18454
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18454
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18454
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18909
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18909
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18909
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18909
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 18909
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19398
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19398
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19398
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19398
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19398
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19881
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19881
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19881
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19881
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 19881
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20357
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20357
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20357
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20357
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20357
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20826
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20826
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20826
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20826
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 20826
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21250
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21250
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21250
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21250
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21250
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21705
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21705
+Playing: 0, Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21705
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 21705
+Playing: 0, Sample Ready: 0, Note done playing: 0
+Playing the note.
+Currently on note:  5, Duration: 15, Output: 21705
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22154
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22154
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22154
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22154
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22154
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22594
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 22594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23027
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23027
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23027
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23027
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23027
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23452
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23452
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23452
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23452
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23452
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23835
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23835
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23835
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23835
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 23835
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24245
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24245
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24245
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24245
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24245
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24647
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24647
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24647
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24647
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 24647
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25040
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25040
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25040
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25040
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25040
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25425
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25425
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25425
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25425
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25425
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25770
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25770
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25770
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25770
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 25770
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26138
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26138
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26138
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26138
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26138
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26497
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26497
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26497
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26497
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26497
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26848
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26848
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26848
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26848
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26848
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27189
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27189
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27189
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27189
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27189
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27521
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27521
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27521
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27521
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27521
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27817
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27817
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27817
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27817
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27817
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28131
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28131
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28131
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28131
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28131
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28436
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28436
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28436
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28436
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28436
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28730
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28730
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28730
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28730
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28730
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29016
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29016
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29016
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29016
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29016
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29268
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29268
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29268
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29268
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29268
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29534
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29534
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29534
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29534
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29534
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29791
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29791
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29791
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29791
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29791
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30037
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30037
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30037
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30037
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30037
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30273
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30273
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30273
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30273
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30273
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30498
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30498
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30498
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30498
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30498
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30696
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30696
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30696
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30696
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30696
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30902
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30902
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30902
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30902
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30902
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31097
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31097
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31097
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31097
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31097
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31282
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31282
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31282
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31282
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31282
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31456
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31456
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31456
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31456
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31456
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31607
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31607
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31607
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31607
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31607
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31760
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31760
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31760
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31760
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31760
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31903
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31903
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31903
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31903
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31903
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32036
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32036
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32036
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32036
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32036
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32157
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32157
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32157
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32157
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32157
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32267
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32267
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32267
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32267
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32267
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32359
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32359
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32359
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32359
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32359
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32448
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32448
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32448
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32448
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32448
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32527
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32527
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32527
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32527
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32527
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32594
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32594
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32650
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32650
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32650
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32650
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32650
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32692
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32692
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32692
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32692
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32692
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32728
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32728
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32728
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32728
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32728
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32752
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32752
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32752
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32752
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32752
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32765
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32765
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32765
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32765
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32765
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32766
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32766
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32766
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32766
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32766
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32757
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32757
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32757
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32757
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32757
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32739
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32739
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32739
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32739
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32739
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32708
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32708
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32667
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32667
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32667
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32667
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32667
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32614
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32614
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32614
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32614
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32614
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32550
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32550
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32550
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32550
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32550
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32482
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32482
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32482
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32482
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32482
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32397
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32397
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32397
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32397
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32397
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32302
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32302
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32302
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32302
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32302
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32195
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32195
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32195
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32195
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32195
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32077
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32077
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32077
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32077
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 32077
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31949
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31821
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31821
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31821
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31821
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31821
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31672
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31672
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31672
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31672
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31672
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31512
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31512
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31341
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31341
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31341
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31341
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31341
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31160
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31160
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31160
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31160
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 31160
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30985
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30985
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30985
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30985
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30985
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30783
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30783
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30783
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30783
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30783
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30571
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30571
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30571
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30571
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30571
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30349
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30349
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30349
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30349
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30349
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30117
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30117
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30117
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30117
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 30117
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29874
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29874
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29874
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29874
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29874
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29642
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29642
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29642
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29642
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29642
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29380
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29380
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29380
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29380
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29380
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29108
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29108
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29108
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29108
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 29108
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28827
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28827
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28827
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28827
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28827
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28535
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28535
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28535
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28535
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28535
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28259
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28259
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28259
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28259
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 28259
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27949
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27949
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27629
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27629
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27629
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27629
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27629
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27300
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27300
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27300
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27300
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 27300
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26962
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26962
+Sample Ready: 1, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26962
+Sample Ready: 0, Note done playing: 0
+Currently on note:  5, Duration: 15, Output: 26962
+Sample Ready: 0, Note done playing: 0
+Note should have ended.
+$stop called at time : 6040 ns : File "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/note_player_tb.v" Line 88
+xsim: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 6917.609 ; gain = 178.891 ; free physical = 64337 ; free virtual = 87867
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'note_player_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for -all
+launch_simulation: Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 6917.609 ; gain = 187.863 ; free physical = 64339 ; free virtual = 87868
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 6917.609 ; gain = 0.000 ; free physical = 66117 ; free virtual = 89357
+set_property top mcu_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/cad/xilinx/vivado/2019.1/Vivado/2019.1/data/xsim/xsim.ini' copied to run dir:'/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'mcu_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj mcu_tb_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/ff_lib.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dff
+INFO: [VRFC 10-311] analyzing module dffr
+INFO: [VRFC 10-311] analyzing module dffre
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mcu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mcu_tb
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot mcu_tb_behav xil_defaultlib.mcu_tb xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator 2019.1
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /cad/xilinx/vivado/2019.1/Vivado/2019.1/bin/unwrapped/lnx64.o/xelab -wto 47baae97ff484445a74919d528db403c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot mcu_tb_behav xil_defaultlib.mcu_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.dffr(WIDTH=2)
+Compiling module xil_defaultlib.dffr
+Compiling module xil_defaultlib.mcu
+Compiling module xil_defaultlib.mcu_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot mcu_tb_behav
+
+****** Webtalk v2019.1.3 (64-bit)
+  **** SW Build 2644227 on Wed Sep  4 09:44:18 MDT 2019
+  **** IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/xsim.dir/mcu_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim/xsim.dir/mcu_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Wed Oct 21 20:05:21 2020. For additional details about this file, please refer to the WebTalk help file at /cad/xilinx/vivado/2019.1/Vivado/2019.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Wed Oct 21 20:05:21 2020...
+run_program: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 6917.609 ; gain = 0.000 ; free physical = 66097 ; free virtual = 89346
+INFO: [USF-XSim-69] 'elaborate' step finished in '9' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/users/tabarca/ee108/lab4/lab4.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "mcu_tb_behav -key {Behavioral:sim_1:Functional:mcu_tb} -tclbatch {mcu_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.1
+Time resolution is 1 ps
+source mcu_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+add_wave: Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 6949.621 ; gain = 32.012 ; free physical = 66095 ; free virtual = 89344
+# run all
+Currently everything should be off.
+Play first song from the beginning.
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Pausing first song after 30 loops
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Playing first song after paused for 20 loops
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 0,   Currently on song: 0
+Should be playing: 1,   Moving on to next song: 0,   Currently on song: 0
+Skipping to next song, then should sit and wait paused
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Playing second song all the way to the end
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should have reached third song and waiting in paused. Skipping to fourth song.
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should have skipped to fourth song and waiting in paused. Skipping back to first song.
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 3
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 0
+Should be playing: 0,   Moving on to next song: 1,   Currently on song: 1
+Should be playing: 1,   Moving on to next song: 1,   Currently on song: 2
+$stop called at time : 3480 ns : File "/home/users/tabarca/ee108/ee108git/ee108/lab4starterfiles/mcu_tb.v" Line 92
+xsim: Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 6949.621 ; gain = 32.012 ; free physical = 66093 ; free virtual = 89342
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'mcu_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for -all
+launch_simulation: Time (s): cpu = 00:00:21 ; elapsed = 00:00:32 . Memory (MB): peak = 6949.621 ; gain = 32.012 ; free physical = 66040 ; free virtual = 89289
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 6949.621 ; gain = 0.000 ; free physical = 66040 ; free virtual = 89337
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 21 21:09:04 2020...
