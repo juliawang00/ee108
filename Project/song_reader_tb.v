@@ -74,6 +74,36 @@ module song_reader_tb ();
       #10
       $display("Playing new_note %d in song %d, which is note1 %d duration %d., note2 %d duration %d., note3 %d duration %d., play: %d, note_done: %d", new_note, song, note1, duration1, note2, duration2, note3, duration3, song_done, play, note_done);
     end
+    
+    #20
+    $display("Fifth read from song ROM giving one note.");
+    song = 2'b00;
+    play = 1;
+    note_done = 1;
+    repeat(100) begin
+      #10
+      $display("Playing new_note %d in song %d, which is note1 %d duration %d., note2 %d duration %d., note3 %d duration %d., play: %d, note_done: %d", new_note, song, note1, duration1, note2, duration2, note3, duration3, song_done, play, note_done);
+    end
+    
+    #20
+    $display("Sixth read from song ROM giving one note.");
+    song = 2'b00;
+    play = 1;
+    note_done = 1;
+    repeat(100) begin
+      #10
+      $display("Playing new_note %d in song %d, which is note1 %d duration %d., note2 %d duration %d., note3 %d duration %d., play: %d, note_done: %d", new_note, song, note1, duration1, note2, duration2, note3, duration3, song_done, play, note_done);
+    end
+    
+    #20
+    $display("Fourth read from song ROM giving a 1 and wait duration.");
+    song = 2'b00;
+    play = 1;
+    note_done = 1;
+    repeat(100) begin
+      #10
+      $display("Playing new_note %d in song %d, which is note1 %d duration %d., note2 %d duration %d., note3 %d duration %d., play: %d, note_done: %d", new_note, song, note1, duration1, note2, duration2, note3, duration3, song_done, play, note_done);
+    end
   end
   
 endmodule
