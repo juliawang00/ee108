@@ -31,7 +31,7 @@ module lab4_top(
     parameter BEAT_COUNT = 1000;
 
     // Our reset
-    wire playback = btn[3];
+    wire playback_button = btn[3];
     wire reset = btn[2];
     wire play_button = btn[1];
     wire next_button = btn[0];
@@ -67,6 +67,14 @@ module lab4_top(
         .reset(reset),
         .in(next_button),
         .out(next)
+    );
+
+    wire playback;
+    button_press_unit #(.WIDTH(BPU_WIDTH)) next_button_press_unit(
+        .clk(clk_100),
+        .reset(reset),
+	.in(playback_button),
+	.out(playback)
     );
 
 //
