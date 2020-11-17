@@ -16,7 +16,7 @@ module lab4_top(
     inout   AC_SDA,             // I2C SDA
 
     // Push button interface
-    input [2:0] btn,
+    input [3:0] btn,
 
     // LEDs
     output wire [2:0] leds_rgb_0,
@@ -31,6 +31,7 @@ module lab4_top(
     parameter BEAT_COUNT = 1000;
 
     // Our reset
+    wire playback = btn[3];
     wire reset = btn[2];
     wire play_button = btn[1];
     wire next_button = btn[0];
