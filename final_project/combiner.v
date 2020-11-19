@@ -5,8 +5,17 @@ module combiner(
 
   output [15:0] out
 );
+  `define WIDTH 18
   
-  wire [17:0] added = (song_one + song_two + song_three);
+  wire [17:0] added = (song_one + song_two + song_three + (delayed >> 2));
+  wire [17:0] delayed = 18'b0;
+  
+  dffr #(`WIDTH) echo (
+    .clk(clk),
+    .r(reset),
+    .d(added),
+    .q(delayed)
+  );
   
   assign out = added >> ((added[17]) ? 2 : (added[16]) ? 1 : 0);
  
