@@ -1,4 +1,4 @@
-module combiner(
+module combiner_echo(
   input [15:0] song_one, 
   input [15:0] song_two,
   input [15:0] song_three,
