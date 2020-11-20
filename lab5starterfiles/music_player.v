@@ -1,3 +1,11 @@
+//
+//  music_player module
+//
+//  This music_player module connects up the MCU, song_reader, note_player,
+//  beat_generator, and codec_conditioner. It provides an output that indicates
+//  a new sample (new_sample_generated) which will be used in lab 5.
+//
+
 module music_player(
     // Standard system clock and reset
     input clk,
@@ -6,6 +14,7 @@ module music_player(
     // Our debounced and one-pulsed button inputs.
     input play_button,
     input next_button,
+    input playback,
 
     // The raw new_frame signal from the ac97_if codec.
     input new_frame,
@@ -51,9 +60,9 @@ module music_player(
 //      Song Reader
 //  ****************************************************************************
 //
-    wire [5:0] note_to_play;
-    wire [5:0] duration_for_note;
-    wire new_note;
+	wire [5:0] note_to_play1, note_to_play2, note_to_play2;
+	wire [5:0] duration_for_note1, duration_for_note2, duration_for_note3;
+    wire new_note1, new_note2, new_note3;
     wire note_done;
     song_reader song_reader(
         .clk(clk),
@@ -61,10 +70,18 @@ module music_player(
         .play(play),
         .song(current_song),
         .song_done(song_done),
-        .note(note_to_play),
-        .duration(duration_for_note),
-        .new_note(new_note),
-        .note_done(note_done)
+    	.note1(note_to_play1),
+    	.note2(note_to_play2),
+    	.note3(note_to_play3),
+    	.duration1(duration_for_note1),
+    	.duration2(duration_for_note2),
+    	.duration3(duration_for_note3),
+    	.new_note1(new_note1),
+    	.new_note2(new_note2),
+    	.new_note3(new_note3),
+        .note_done1(note_done1), 
+    	.note_done2(note_done2),
+    	.note_done3(note_done3)
     );
 
 //   
@@ -72,24 +89,70 @@ module music_player(
 //      Note Player
 //  ****************************************************************************
 //  
+    
+   wire [2:0] playback_speed;
+   dffre #(3) duration (
+		.clk(clk),
+		.r(reset),
+		.en(playback),
+		.d(playback_speed + 1),
+		.q(playback_speed)
+    );
+    
     wire beat;
     wire generate_next_sample;
-    wire [15:0] note_sample;
-    wire note_sample_ready;
+    wire [15:0] note_sample1, note_sample2, note_sample3;
+    wire note_sample_ready1, note_sample_ready2, note_sample_ready3;
+	wire [5:0] playback_duration1;
+    assign playback_duration1 = duration_for_note1 >> playback_speed[1:0];
+	
+    note_player note_player1(
+        .clk(clk),
+        .reset(reset),
+        .play_enable(play),
+        .note_to_load(note_to_play1),
+        .duration_to_load(playback_duration1),
+        .load_new_note(new_note1),
+        .done_with_note(note_done1),
+        .beat(beat),
+        .generate_next_sample(generate_next_sample),
+        .sample_out(note_sample1),
+        .new_sample_ready(note_sample_ready1)
+    );
+      
+    wire [5:0] playback_duration2;
+    assign playback_duration2 = duration_for_note2 >> playback_speed[1:0];
+    
     note_player note_player(
         .clk(clk),
         .reset(reset),
         .play_enable(play),
-        .note_to_load(note_to_play),
-        .duration_to_load(duration_for_note),
-        .load_new_note(new_note),
-        .done_with_note(note_done),
+        .note_to_load(note_to_play2),
+        .duration_to_load(playback_duration2),
+        .load_new_note(new_note2),
+        .done_with_note(note_done2),
         .beat(beat),
         .generate_next_sample(generate_next_sample),
-        .sample_out(note_sample),
-        .new_sample_ready(note_sample_ready)
+        .sample_out(note_sample2),
+        .new_sample_ready(note_sample_ready2)
     );
-      
+
+    wire [5:0] playback_duration3;
+    assign playback_duration3 = duration_for_note3 >> playback_speed[1:0];
+    
+    note_player note_player(
+        .clk(clk),
+        .reset(reset),
+        .play_enable(play),
+        .note_to_load(note_to_play3),
+        .duration_to_load(playback_duration3),
+        .load_new_note(new_note3),
+        .done_with_note(note_done3),
+        .beat(beat),
+        .generate_next_sample(generate_next_sample),
+        .sample_out(note_sample3),
+        .new_sample_ready(note_sample_ready3)
+    );
 //   
 //  ****************************************************************************
 //      Beat Generator
@@ -110,12 +173,22 @@ module music_player(
 //      Codec Conditioner
 //  ****************************************************************************
 //  
+
+    wire [15:0] combined_note;
+    combiner combiner(
+        .song_one(note_sample1),
+        .song_two(note_sample2),
+        .song_three(note_sample3),
+        .out(combined_note)
+    );
+    
+
     assign new_sample_generated = generate_next_sample;
     codec_conditioner codec_conditioner(
         .clk(clk),
         .reset(reset),
-        .new_sample_in(note_sample),
-        .latch_new_sample_in(note_sample_ready),
+        .new_sample_in(combined_note),
+        .latch_new_sample_in(note_sample_ready1 || note_sample_ready2 || note_sample_ready3),
         .generate_next_sample(generate_next_sample),
         .new_frame(new_frame),
         .valid_sample(sample_out)
