@@ -5,7 +5,7 @@
 					
 module song_rom (					
 	input clk,				
-	input [6:0] addr,				
+	input [7:0] addr,				
 	output reg [15:0] dout				
 );					
 					
@@ -142,4 +142,4 @@ module song_rom (
 	assign memory[	125	] =	{1'd0,6'd27, 6'd12,3'd0};	// Note: 3B
 	assign memory[	126	] =	{4'd8,6'd0, 6'd12};	// Note: rest
 	assign memory[	127	] =	{4'd8,6'd0, 6'd12};	// Note: rest
-endmodule					
+endmodule
