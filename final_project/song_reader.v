@@ -7,11 +7,10 @@
 // ----------------------------------------------
 // Define State Assignments
 // ----------------------------------------------
-`define SWIDTH 3
-`define PAUSED             3'b000
-`define WAIT               3'b001
-`define INCREMENT_ADDRESS  3'b010
-`define RETRIEVE_NOTE      3'b110
+`define SWIDTH 2
+`define PAUSED             2'b00
+`define WAIT               2'b01
+`define RETRIEVE_NOTE      2'b10
 
 
 module song_reader(
@@ -74,13 +73,11 @@ module song_reader(
         case (state)
             `PAUSED:            next = play ? `RETRIEVE_NOTE : `PAUSED;
             // HAVE ONLY ONE RETRIEVE STATE THAT GOES TO WAIT WHEN ARBITER OUTPUTS 0
-            `RETRIEVE_NOTE:    next = !play ? `PAUSED : note_and_duration[15] ? `WAIT : `RETRIEVE_NOTE;
+            `RETRIEVE_NOTE:    next = (!play || overflow) ? `PAUSED : note_and_duration[15] ? `WAIT : `RETRIEVE_NOTE;
           
             `WAIT:              next = !play ? `PAUSED
-                                            : (done_wait ? `INCREMENT_ADDRESS
+                                             : (done_wait ? `RETRIEVE_NOTE
                                                           : `WAIT);
-            `INCREMENT_ADDRESS: next = (play && ~overflow) ? `RETRIEVE_NOTE
-                                                           : `PAUSED;
             default:            next = `PAUSED;
         endcase
     end
@@ -88,7 +85,7 @@ module song_reader(
     // We increment when we are in one of the retrieve_note states with the MSB high, or if we are in increment address. Overflow is set high when the last note of 
     // a song is played, eg {1'd0,8'd127} + 1 = {1'd1, 8'd0}
     assign {overflow, next_note_num} =
-        ((state == `INCREMENT_ADDRESS) || ((state == `RETRIEVE_NOTE) && ~note_and_duration[15])) ? {1'b0, curr_note_num} + 1 : {1'b0, curr_note_num};
+        (state == `RETRIEVE_NOTE) ? {1'b0, curr_note_num} + 1 : {1'b0, curr_note_num};
 
     arbiter open_player(.bit_i(notes_done), .bit_o(player_available));
     assign {new_note1, note1, duration1} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b100) || note_and_duration[0]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
