@@ -76,15 +76,6 @@ module lab4_top(
 		.in(playback_button),
 		.out(playback)
     );
-	
-	wire [2:0] playback_speed;
-	dffre #(3) duration (
-		.clk(clk),
-		.r(reset),
-		.en(playback),
-		.d(playback_speed + 1),
-		.q(playback_speed)
-    );
 
 //
 //  ****************************************************************************
@@ -99,7 +90,6 @@ module lab4_top(
         .reset(reset),
         .play_button(play),
         .next_button(next),
-		.playback_speed(playback_speed),
         .new_frame(new_frame),
         .sample_out(codec_sample),
         .new_sample_generated(new_sample)
