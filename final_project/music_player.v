@@ -60,10 +60,10 @@ module music_player(
 //      Song Reader
 //  ****************************************************************************
 //
-	wire [5:0] note_to_play1, note_to_play2, note_to_play2;
+	wire [5:0] note_to_play1, note_to_play2, note_to_play3;
 	wire [5:0] duration_for_note1, duration_for_note2, duration_for_note3;
     wire new_note1, new_note2, new_note3;
-    wire note_done;
+    wire note_done1, note_done2, note_done3;
     song_reader song_reader(
         .clk(clk),
         .reset(reset | reset_player),
@@ -123,7 +123,7 @@ module music_player(
     wire [5:0] playback_duration2;
     assign playback_duration2 = duration_for_note2 >> playback_speed[1:0];
     
-    note_player note_player(
+    note_player note_player2(
         .clk(clk),
         .reset(reset),
         .play_enable(play),
@@ -140,7 +140,7 @@ module music_player(
     wire [5:0] playback_duration3;
     assign playback_duration3 = duration_for_note3 >> playback_speed[1:0];
     
-    note_player note_player(
+    note_player note_player3(
         .clk(clk),
         .reset(reset),
         .play_enable(play),
