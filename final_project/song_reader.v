@@ -91,9 +91,9 @@ module song_reader(
         ((state == `INCREMENT_ADDRESS) || ((state == `RETRIEVE_NOTE) && ~note_and_duration[15])) ? {1'b0, curr_note_num} + 1 : {1'b0, curr_note_num};
 
     arbiter open_player(.bit_i(notes_done), .bit_o(player_available));
-    assign {new_note1, note1, duration1} = ((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b100) ? {1'b1, note_and_duration[14:3]} : {13'b0};
-    assign {new_note2, note2, duration2} = ((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b010) ? {1'b1, note_and_duration[14:3]} : {13'b0};
-    assign {new_note3, note3, duration3} = ((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b001) ? {1'b1, note_and_duration[14:3]} : {13'b0};
+    assign {new_note1, note1, duration1} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b100) || note_and_duration[0]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
+    assign {new_note2, note2, duration2} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b010) || note_and_duration[1]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
+    assign {new_note3, note3, duration3} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b001) || note_and_duration[2]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
     
     assign song_done = overflow;
 
