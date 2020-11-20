@@ -79,11 +79,11 @@ module lab4_top(
 	
 	wire [2:0] playback_speed;
 	dffre #(3) duration (
-        .clk(clk),
-        .r(reset),
+		.clk(clk),
+		.r(reset),
 		.en(playback),
 		.d(playback_speed + 1),
-        .q(playback_speed)
+		.q(playback_speed)
     );
 
 //
