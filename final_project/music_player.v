@@ -173,12 +173,22 @@ module music_player(
 //      Codec Conditioner
 //  ****************************************************************************
 //  
+
+    wire [15:0] combined_note;
+    combiner combiner(
+        .song_one(note_sample1),
+        .song_two(note_sample2),
+        .song_three(note_sample3),
+        .out(combined_note)
+    );
+    
+
     assign new_sample_generated = generate_next_sample;
     codec_conditioner codec_conditioner(
         .clk(clk),
         .reset(reset),
-        .new_sample_in(note_sample),
-        .latch_new_sample_in(note_sample_ready),
+        .new_sample_in(combined_note),
+        .latch_new_sample_in(note_sample_ready1 || note_sample_ready2 || note_sample_ready3),
         .generate_next_sample(generate_next_sample),
         .new_frame(new_frame),
         .valid_sample(sample_out)
