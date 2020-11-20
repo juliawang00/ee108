@@ -2,7 +2,10 @@ module wave_display_top(
     input clk,
     input reset,
     input new_sample,
-    input [15:0] sample,
+    input [15:0] combined_sample,
+    input [15:0] sample1,
+    input [15:0] sample2,
+    input [15:0] sample3,
     input [10:0] x,  // [0..1279]
     input [9:0]  y,  // [0..1023]     
     input valid,
@@ -41,7 +44,7 @@ module wave_display_top(
         .doutb(read_sample)
     );
  
-    wire valid_pixel;
+    wire valid_pixel_combined;
     wire [7:0] wd_r, wd_g, wd_b;
     wave_display wd(
         .clk(clk),
@@ -52,10 +55,55 @@ module wave_display_top(
         .read_address(read_address),
         .read_value(read_sample),
         .read_index(read_index),
-        .valid_pixel(valid_pixel),
+        .valid_pixel(valid_pixel_combined),
         .r(wd_r), .g(wd_g), .b(wd_b)
     );
+    
+    wire valid_pixel;
+    wire [7:0] r1, g1, b1;
+    wave_display note1(
+        .clk(clk),
+        .reset(reset),
+        .x(x),
+        .y(y),
+        .valid(valid),
+        .read_address(read_address),
+        .read_value(read_sample),
+        .read_index(read_index),
+        .valid_pixel(valid_pixel),
+        .r(r1), .g(g1), .b(b1)
+    );
+    
+    wire valid_pixel;
+    wire [7:0] r2, g2, b2;
+    wave_display note2(
+        .clk(clk),
+        .reset(reset),
+        .x(x),
+        .y(y),
+        .valid(valid),
+        .read_address(read_address),
+        .read_value(read_sample),
+        .read_index(read_index),
+        .valid_pixel(valid_pixel),
+        .r(r2), .g(g2), .b(b2)
+    );
+    
+    wire valid_pixel;
+    wire [7:0] r3, g3, b3;
+    wave_display note3(
+        .clk(clk),
+        .reset(reset),
+        .x(x),
+        .y(y),
+        .valid(valid),
+        .read_address(read_address),
+        .read_value(read_sample),
+        .read_index(read_index),
+        .valid_pixel(valid_pixel),
+        .r(r3), .g(g3), .b(b3)
+    );
 
-    assign {r, g, b} = valid_pixel ? {wd_r, wd_g, wd_b} : {3{8'b0}};
+    assign {r, g, b} = valid_pixel ? ({wd_r, wd_g, wd_b} == 24'hFFFFFF) ? {wd_r, wd_g, wd_b} : ({r1, g1, b1} == 24'hFFFFFF) ? 24'hFF0000 : ({r2, g2, b2} == 24'hFFFFFF) ? 24'h00FF00 : ({r3, g3, b3} == 24'hFFFFFF) ? 24'h0000FF: {3{8'b0}};
 
 endmodule
