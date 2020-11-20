@@ -18,6 +18,6 @@ module combiner_echo(
     .q(delayed)
   );
   
-  assign out = added_with_delay >> ((added_with_delay[17]) ? 2 : (added_with_delay[16]) ? 1 : 0);
+  assign out = (added_with_delay >> ((added_with_delay[17]) ? 2 : (added_with_delay[16]) ? 1 : 0))[0:15];
  
 endmodule
