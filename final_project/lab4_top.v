@@ -99,6 +99,7 @@ module lab4_top(
         .reset(reset),
         .play_button(play),
         .next_button(next),
+		.playback_speed(playback_speed),
         .new_frame(new_frame),
         .sample_out(codec_sample),
         .new_sample_generated(new_sample)
