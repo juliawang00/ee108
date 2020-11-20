@@ -1,10 +1,13 @@
+
 module combiner_echo(
+  input clk, reset,
   input [15:0] song_one, 
   input [15:0] song_two,
   input [15:0] song_three,
 
   output [15:0] out
 );
+  
   `define WIDTH 18
   
   wire [17:0] added = (song_one + song_two + song_three);
@@ -18,6 +21,6 @@ module combiner_echo(
     .q(delayed)
   );
   
-  assign out = (added_with_delay >> ((added_with_delay[17]) ? 2 : (added_with_delay[16]) ? 1 : 0))[0:15];
+  assign out = added_with_delay[17] ? added_with_delay[17:2] : added_with_delay[16] ? added_with_delay[16:1] : added_with_delay[15:0];
  
 endmodule
