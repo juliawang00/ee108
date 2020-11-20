@@ -5,7 +5,7 @@
 					
 module song_rom (					
 	input clk,				
-	input [6:0] addr,				
+	input [7:0] addr,				
 	output reg [15:0] dout				
 );					
 					
