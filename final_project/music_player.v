@@ -79,7 +79,9 @@ module music_player(
 	.new_note1(new_note1),
 	.new_note2(new_note2),
 	.new_note3(new_note3),
-        .note_done(note_done)
+	    .note_done1(note_done1), 
+	    .note_done2(note_done2),
+	    .note_done3(note_done3)
     );
 
 //   
