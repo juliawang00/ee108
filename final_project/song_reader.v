@@ -28,7 +28,7 @@ module song_reader(
     wire [`MSB + `NOTE_WIDTH + `DURATION_WIDTH + `OPTIONS -1:0] note_and_duration; // 16 bits. Value read from the rom and as specified in lab directions. MSB specifies if reading a note or wait period.
     wire [`SONG_WIDTH - 2:0] rom_addr = {song, curr_note_num}; // Address in the rom to read.
     wire [2:0] notes_done = {note_done1, note_done2, note_done3}; // Used in arbiter to see which note_player modules are available.
-    reg [2:0] player_available;
+    wire [2:0] player_available;
 
     wire [`SWIDTH-1:0] state;
     reg  [`SWIDTH-1:0] next;
