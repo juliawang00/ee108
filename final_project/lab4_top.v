@@ -73,8 +73,17 @@ module lab4_top(
     button_press_unit #(.WIDTH(BPU_WIDTH)) next_button_press_unit(
         .clk(clk_100),
         .reset(reset),
-	.in(playback_button),
-	.out(playback)
+		.in(playback_button),
+		.out(playback)
+    );
+	
+	wire [2:0] playback_speed;
+	dffre #(3) duration (
+        .clk(clk),
+        .r(reset),
+		.en(playback),
+		.d(playback_speed + 1),
+        .q(playback_speed)
     );
 
 //
