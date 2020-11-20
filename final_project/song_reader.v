@@ -67,7 +67,7 @@ module song_reader(
     
     // Count down when we are in the WAIT state, otherwise set the note to the duration value. It will be properly set before we reach state WAIT.
     wire[5:0] countdown;
-    wire[5:0] duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[5:0];
+    wire[5:0] duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[7:2];
     wire done_wait = (countdown==6'b0);            
 
     always @(*) begin
