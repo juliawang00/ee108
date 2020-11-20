@@ -63,7 +63,8 @@ module song_reader(
     song_rom rom(.clk(clk), .addr(rom_addr), .dout(note_and_duration));
     
     // Count down when we are in the WAIT state, otherwise set the note to the duration value. It will be properly set before we reach state WAIT.
-    assign duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[5:0];
+    wire[5:0] countdown;
+    wire[5:0] duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[5:0];
     wire done_wait = (countdown==6'b0);            
 
     always @(*) begin
