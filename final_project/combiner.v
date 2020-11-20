@@ -8,6 +8,6 @@ module combiner(
   
   wire [17:0] added = (song_one + song_two + song_three);
   
-  assign out = added >> ((added[17]) ? 2 : (added[16]) ? 1 : 0);
+  assign out = (added >> ((added[17]) ? 2 : (added[16]) ? 1 : 0))[0:15];
  
 endmodule
