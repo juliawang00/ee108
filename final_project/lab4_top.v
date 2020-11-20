@@ -73,8 +73,8 @@ module lab4_top(
     button_press_unit #(.WIDTH(BPU_WIDTH)) next_button_press_unit(
         .clk(clk_100),
         .reset(reset),
-		.in(playback_button),
-		.out(playback)
+	.in(playback_button),
+	.out(playback)
     );
 
 //
@@ -90,6 +90,7 @@ module lab4_top(
         .reset(reset),
         .play_button(play),
         .next_button(next),
+	.playback(playback),
         .new_frame(new_frame),
         .sample_out(codec_sample),
         .new_sample_generated(new_sample)
