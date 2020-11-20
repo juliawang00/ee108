@@ -95,7 +95,7 @@ module music_player(
 		.clk(clk),
 		.r(reset),
 		.en(playback),
-	   	.d(next_playback_speed+1'd1),
+	        .d(next_playback_speed+3'd1),
 		.q(playback_speed)
     );
     
