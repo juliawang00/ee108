@@ -60,7 +60,7 @@ module music_player(
 //      Song Reader
 //  ****************************************************************************
 //
-	wire [5:0] note_to_play1, note_to_play1, note_to_play1;
+	wire [5:0] note_to_play1, note_to_play2, note_to_play2;
 	wire [5:0] duration_for_note1, duration_for_note2, duration_for_note3;
     wire new_note1, new_note2, new_note3;
     wire note_done;
@@ -72,10 +72,10 @@ module music_player(
         .song_done(song_done),
 	.note1(note_to_play1),
 	.note2(note_to_play2),
-	.note2(note_to_play2),
+	.note3(note_to_play3),
 	.duration1(duration_for_note1),
 	.duration2(duration_for_note2),
-	.duration3(duration_for_note),
+	.duration3(duration_for_note3),
 	.new_note1(new_note1),
 	.new_note2(new_note2),
 	.new_note3(new_note3),
