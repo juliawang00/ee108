@@ -55,7 +55,7 @@ module song_reader(
     dffre #(`DURATION_WIDTH) wait_countdown (
         .clk(clk),
         .r(reset),
-        .e(note_and_duration[15]),
+        .en(note_and_duration[15]),
         .d(duration_to_load),
         .q(countdown)
     );
