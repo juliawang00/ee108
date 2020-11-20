@@ -70,7 +70,7 @@ module lab4_top(
     );
 
     wire playback;
-    button_press_unit #(.WIDTH(BPU_WIDTH)) next_button_press_unit(
+	button_press_unit #(.WIDTH(BPU_WIDTH)) playback_button_press_unit(
         .clk(clk_100),
         .reset(reset),
 	.in(playback_button),
