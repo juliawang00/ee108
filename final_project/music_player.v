@@ -70,18 +70,18 @@ module music_player(
         .play(play),
         .song(current_song),
         .song_done(song_done),
-	.note1(note_to_play1),
-	.note2(note_to_play2),
-	.note3(note_to_play3),
-	.duration1(duration_for_note1),
-	.duration2(duration_for_note2),
-	.duration3(duration_for_note3),
-	.new_note1(new_note1),
-	.new_note2(new_note2),
-	.new_note3(new_note3),
-	    .note_done1(note_done1), 
-	    .note_done2(note_done2),
-	    .note_done3(note_done3)
+    	.note1(note_to_play1),
+    	.note2(note_to_play2),
+    	.note3(note_to_play3),
+    	.duration1(duration_for_note1),
+    	.duration2(duration_for_note2),
+    	.duration3(duration_for_note3),
+    	.new_note1(new_note1),
+    	.new_note2(new_note2),
+    	.new_note3(new_note3),
+        .note_done1(note_done1), 
+    	.note_done2(note_done2),
+    	.note_done3(note_done3)
     );
 
 //   
@@ -101,25 +101,58 @@ module music_player(
     
     wire beat;
     wire generate_next_sample;
-    wire [15:0] note_sample;
-    wire note_sample_ready;
-	wire [5:0] playback_duration;
-    assign playback_duration = duration_for_note >> playback_speed[1:0];
+    wire [15:0] note_sample1, note_sample2, note_sample3;
+    wire note_sample_ready1, note_sample_ready2, note_sample_ready3;
+	wire [5:0] playback_duration1;
+    assign playback_duration1 = duration_for_note1 >> playback_speed[1:0];
 	
+    note_player note_player1(
+        .clk(clk),
+        .reset(reset),
+        .play_enable(play),
+        .note_to_load(note_to_play1),
+        .duration_to_load(playback_duration1),
+        .load_new_note(new_note1),
+        .done_with_note(note_done1),
+        .beat(beat),
+        .generate_next_sample(generate_next_sample),
+        .sample_out(note_sample1),
+        .new_sample_ready(note_sample_ready1)
+    );
+      
+    wire [5:0] playback_duration2;
+    assign playback_duration2 = duration_for_note2 >> playback_speed[1:0];
+    
     note_player note_player(
         .clk(clk),
         .reset(reset),
         .play_enable(play),
-        .note_to_load(note_to_play),
-        .duration_to_load(playback_duration),
-        .load_new_note(new_note),
-        .done_with_note(note_done),
+        .note_to_load(note_to_play2),
+        .duration_to_load(playback_duration2),
+        .load_new_note(new_note2),
+        .done_with_note(note_done2),
         .beat(beat),
         .generate_next_sample(generate_next_sample),
-        .sample_out(note_sample),
-        .new_sample_ready(note_sample_ready)
+        .sample_out(note_sample2),
+        .new_sample_ready(note_sample_ready2)
     );
-      
+
+    wire [5:0] playback_duration3;
+    assign playback_duration3 = duration_for_note3 >> playback_speed[1:0];
+    
+    note_player note_player(
+        .clk(clk),
+        .reset(reset),
+        .play_enable(play),
+        .note_to_load(note_to_play3),
+        .duration_to_load(playback_duration3),
+        .load_new_note(new_note3),
+        .done_with_note(note_done3),
+        .beat(beat),
+        .generate_next_sample(generate_next_sample),
+        .sample_out(note_sample3),
+        .new_sample_ready(note_sample_ready3)
+    );
 //   
 //  ****************************************************************************
 //      Beat Generator
