@@ -1,10 +1,12 @@
-module combiner_tb();
-  
+module combiner_echo_tb();
+  reg clk, rst;
   reg [15:0] one, two, three;
   reg [17:0] delay;
-  wire[17:0] out;
+  wire[15:0] out;
   
   combiner reader(
+    .clk(clk),
+    .reset(rst),
     .song_one(one),
     .song_two(two),
     .song_three(three),
