@@ -14,6 +14,7 @@ module music_player(
     // Our debounced and one-pulsed button inputs.
     input play_button,
     input next_button,
+    input playback,
 
     // The raw new_frame signal from the ac97_if codec.
     input new_frame,
@@ -80,6 +81,17 @@ module music_player(
 //      Note Player
 //  ****************************************************************************
 //  
+    
+   wire [2:0] playback_speed;
+   dffre #(3) duration (
+		.clk(clk),
+		.r(reset),
+		.en(playback),
+		.d(playback_speed + 1),
+		.q(playback_speed)
+    );
+    
+    assign playback_duration = duration_for_note >> playback_speed[1:0];
     wire beat;
     wire generate_next_sample;
     wire [15:0] note_sample;
@@ -89,7 +101,7 @@ module music_player(
         .reset(reset),
         .play_enable(play),
         .note_to_load(note_to_play),
-        .duration_to_load(duration_for_note),
+        .duration_to_load(playback_duration),
         .load_new_note(new_note),
         .done_with_note(note_done),
         .beat(beat),
