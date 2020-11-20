@@ -91,11 +91,13 @@ module music_player(
 		.q(playback_speed)
     );
     
-    assign playback_duration = duration_for_note >> playback_speed[1:0];
     wire beat;
     wire generate_next_sample;
     wire [15:0] note_sample;
     wire note_sample_ready;
+	wire [5:0] playback_duration;
+    assign playback_duration = duration_for_note >> playback_speed[1:0];
+	
     note_player note_player(
         .clk(clk),
         .reset(reset),
