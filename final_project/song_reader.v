@@ -17,6 +17,7 @@ module song_reader(
     input clk,
     input reset,
     input play,
+    input beat,
     input [1:0] song,
     input note_done1, note_done2, note_done3,
     output wire song_done,
@@ -33,9 +34,6 @@ module song_reader(
     wire [`SWIDTH-1:0] state;
     reg  [`SWIDTH-1:0] next;
     
-    wire [1:0] cur_note_module;
-    wire [1:0] next_note_module;
-
     // For identifying when we reach the end of a song
     wire overflow;
 
@@ -56,7 +54,7 @@ module song_reader(
     dffre #(`DURATION_WIDTH) wait_countdown (
         .clk(clk),
         .r(reset),
-        .en(note_and_duration[15]),
+        .en(beat || note_and_duration[15]),
         .d(duration_to_load),
         .q(countdown)
     );
@@ -66,7 +64,8 @@ module song_reader(
     
     // Count down when we are in the WAIT state, otherwise set the note to the duration value. It will be properly set before we reach state WAIT.
     wire[5:0] countdown;
-    wire[5:0] duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[7:2];
+    wire[5:0] duration_to_load;
+    assign duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[8:3];
     wire done_wait = (countdown==6'b0);            
 
     always @(*) begin
@@ -95,6 +94,7 @@ module song_reader(
     assign song_done = overflow;
 
 endmodule
+
 // OLD CODE:
 
 
