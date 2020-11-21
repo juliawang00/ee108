@@ -24,6 +24,7 @@ module song_reader_tb ();
     .clk(clk),
     .reset(reset),
     .play(play),
+    .beat(beat),
     .song(song),
     .note_done1(note_done1),
     .note_done2(note_done2),
