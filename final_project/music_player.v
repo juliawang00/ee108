@@ -68,6 +68,7 @@ module music_player(
         .clk(clk),
         .reset(reset | reset_player),
         .play(play),
+	.beat(beat),
         .song(current_song),
         .song_done(song_done),
     	.note1(note_to_play1),
@@ -103,7 +104,8 @@ module music_player(
     wire generate_next_sample;
     wire [15:0] note_sample1, note_sample2, note_sample3;
     wire note_sample_ready1, note_sample_ready2, note_sample_ready3;
-	wire [5:0] playback_duration1;
+	
+    wire [5:0] playback_duration1;
     assign playback_duration1 = duration_for_note1 >> playback_speed[1:0];
 	
     note_player note_player1(
