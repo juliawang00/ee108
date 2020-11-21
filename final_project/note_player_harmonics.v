@@ -60,7 +60,7 @@ module note_player(
     assign next_state = (reset || done_with_note || load_new_note)
                         ? duration_to_load : state - 1;
 
-    assign done_with_note = (state == 6'b0) && beat;
+    assign done_with_note = (state == 6'b0);
     
     assign added = fund_sample_out + (overtone_sample_tone >> 1); // The right bitshift decreases the amplitude by half.
     assign sample_out = added[17] ? added[17:2] : added[16] ? added[16:1] : added[15:0];
