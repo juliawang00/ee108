@@ -1,5 +1,5 @@
 module song_reader_tb ();
-  reg clk, reset, play, note_done;
+  reg clk, reset, play, note_done, rewind;
   reg generate_next_sample;
   reg [1:0] song;
   wire [5:0] note1;
@@ -25,6 +25,7 @@ module song_reader_tb ();
     .reset(reset),
     .play(play),
     .beat(beat),
+    .rewind(rewind),
     .song(song),
     .note_done1(note_done1),
     .note_done2(note_done2),
@@ -98,6 +99,7 @@ module song_reader_tb ();
   
   initial begin
     generate_next_sample = 1'b0;
+    rewind = 1'b0;
     forever  begin
         #5 generate_next_sample = 0;
         #20 generate_next_sample =1;
