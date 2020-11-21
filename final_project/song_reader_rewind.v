@@ -18,6 +18,7 @@ module song_reader(
     input reset,
     input play,
     input beat,
+    input rewind,
     input [1:0] song,
     input note_done1, note_done2, note_done3,
     output wire song_done,
@@ -55,7 +56,7 @@ module song_reader(
     dffre #(`DURATION_WIDTH) wait_countdown (
         .clk(clk),
         .r(reset),
-        .en(beat || note_and_duration[15]),
+        .en(beat || current_n_and_d[15]),
         .d(duration_to_load),
         .q(countdown)
     );
@@ -65,19 +66,19 @@ module song_reader(
     song_rom_rewind rom_rewind(.clk(clk), .addr(rom_addr), .dout(note_and_duration_rewind));
     
     wire [`MSB + `NOTE_WIDTH + `DURATION_WIDTH + `OPTIONS -1:0] current_n_and_d;
-    assign current_n_and_d = (rewind) ? note_and_duration
+    assign current_n_and_d = (rewind) ? note_and_duration_rewind : note_and_duration;
     
     // Count down when we are in the WAIT state, otherwise set the note to the duration value. It will be properly set before we reach state WAIT.
     wire[5:0] countdown;
     wire[5:0] duration_to_load;
-    assign duration_to_load = (state==`WAIT) ? countdown - 1 : note_and_duration[8:3];
+    assign duration_to_load = (state==`WAIT) ? countdown - 1 : current_n_and_d[8:3];
     wire done_wait = (countdown==6'b0);            
 
     always @(*) begin
         case (state)
             `PAUSED:            next = play ? `RETRIEVE_NOTE : `PAUSED;
             // HAVE ONLY ONE RETRIEVE STATE THAT GOES TO WAIT WHEN ARBITER OUTPUTS 0
-            `RETRIEVE_NOTE:    next = (!play || overflow) ? `PAUSED : note_and_duration[15] ? `WAIT : `RETRIEVE_NOTE;
+            `RETRIEVE_NOTE:    next = (!play || overflow) ? `PAUSED : current_n_and_d[15] ? `WAIT : `RETRIEVE_NOTE;
           
             `WAIT:              next = !play ? `PAUSED
                                              : (done_wait ? `RETRIEVE_NOTE
@@ -92,9 +93,9 @@ module song_reader(
         (state == `RETRIEVE_NOTE) ? {1'b0, curr_note_num} + 1 : {1'b0, curr_note_num};
 
     arbiter open_player(.bit_i(notes_done), .bit_o(player_available));
-    assign {new_note1, note1, duration1} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b100) || note_and_duration[0]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
-    assign {new_note2, note2, duration2} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b010) || note_and_duration[1]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
-    assign {new_note3, note3, duration3} = (((state == `RETRIEVE_NOTE) && ~note_and_duration[15] && player_available == 3'b001) || note_and_duration[2]) ? {1'b1, note_and_duration[14:3]} : {13'b0};
+    assign {new_note1, note1, duration1} = (((state == `RETRIEVE_NOTE) && ~current_n_and_d[15] && player_available == 3'b100) || current_n_and_d[0]) ? {1'b1, current_n_and_d[14:3]} : {13'b0};
+    assign {new_note2, note2, duration2} = (((state == `RETRIEVE_NOTE) && ~current_n_and_d[15] && player_available == 3'b010) || current_n_and_d[1]) ? {1'b1, current_n_and_d[14:3]} : {13'b0};
+    assign {new_note3, note3, duration3} = (((state == `RETRIEVE_NOTE) && ~current_n_and_d[15] && player_available == 3'b001) || current_n_and_d[2]) ? {1'b1, current_n_and_d[14:3]} : {13'b0};
     
     assign song_done = overflow;
 
