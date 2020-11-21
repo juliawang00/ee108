@@ -7,7 +7,7 @@ module note_player_tb();
     wire done_with_note, new_sample_ready, beat;
     wire [15:0] sample_out;
 
-    note_player np(
+    note_player_harmonics np(
         .clk(clk),
         .reset(reset),
 
