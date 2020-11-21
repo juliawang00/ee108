@@ -15,7 +15,7 @@ module note_player(
     wire [19:0] step_size;
     wire [5:0] freq_rom_in;
     wire [15:0] fund_sample_out, overtone_sample_out;
-    wire [17:0] added;
+    wire [16:0] added;
 
     dffre #(.WIDTH(6)) freq_reg (
         .clk(clk),
@@ -65,6 +65,6 @@ module note_player(
     assign done_with_note = (state == 6'b0);
     
     assign added = fund_sample_out + (overtone_sample_tone >> 1); // The right bitshift decreases the amplitude by half.
-    assign sample_out = added[17] ? added[17:2] : added[16] ? added[16:1] : added[15:0];
+    assign sample_out = added[16] ? added[16:1] : added[15:0]; // Account for overflow in the addition of the waves by taking the appropriate slice of added.
 
 endmodule
