@@ -50,6 +50,7 @@ module music_player_tb();
         delay = 2000000;
         play_button = 1'b0;
         next_button = 1'b0;
+        playback_button = 1'b0
         @(negedge reset);
         @(negedge clk);
 
