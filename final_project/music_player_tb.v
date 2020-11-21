@@ -8,6 +8,7 @@ module music_player_tb();
         .reset(reset),
         .next_button(next_button),
         .play_button(play_button),
+        .playback(playback_button),
         .new_frame(new_frame),
         .sample_out(sample)
     );
