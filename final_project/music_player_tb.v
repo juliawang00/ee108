@@ -1,5 +1,5 @@
 module music_player_tb();
-    reg clk, reset, next_button, play_button;
+    reg clk, reset, next_button, play_button, playback_button;
     wire new_frame;
     wire [15:0] sample;
 
