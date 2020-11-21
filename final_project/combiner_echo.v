@@ -1,4 +1,3 @@
-
 module combiner_echo(
   input clk, reset,
   input [15:0] song_one, 
@@ -21,5 +20,6 @@ module combiner_echo(
     .q(delayed)
   );
   
-  assign out = (added_with_delay >> ((added_with_delay[17]) ? 2 : (added_with_delay[16]) ? 1 : 0))[0:15]; 
+  assign out = added_with_delay[17] ? added_with_delay[17:2] : added_with_delay[16] ? added_with_delay[16:1] : added_with_delay[15:0];
+ 
 endmodule
