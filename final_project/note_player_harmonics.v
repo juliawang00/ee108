@@ -31,6 +31,7 @@ module note_player(
         .dout(step_size)
     );
 
+    // Sine_reader for the fundamental frequency.
     sine_reader sine_read_fund(
         .clk(clk),
         .reset(reset),
@@ -40,6 +41,7 @@ module note_player(
         .sample(fund_sample_out)
     );
     
+    // Second sine_reader for the overtone.
     sine_reader sine_read_overtone(
         .clk(clk),
         .reset(reset),
