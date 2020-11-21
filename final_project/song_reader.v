@@ -18,6 +18,7 @@ module song_reader(
     input reset,
     input play,
     input beat,
+    input rewind,
     input [1:0] song,
     input note_done1, note_done2, note_done3,
     output wire song_done,
