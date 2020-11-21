@@ -49,6 +49,6 @@ module note_player(
     assign next_state = (reset || done_with_note || load_new_note)
                         ? duration_to_load : state - 1;
 
-    assign done_with_note = (state == 6'b0);
+    assign done_with_note = (state == 6'b0);// && beat;
 
 endmodule
